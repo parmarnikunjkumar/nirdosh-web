@@ -38,39 +38,18 @@ public class appConfig extends WebMvcConfigurerAdapter{
 	String mongoDbHost;
 	
 	@Override
-	public void addFormatters(FormatterRegistry registry) {
-		
+	public void addFormatters(FormatterRegistry registry) {		
 		registry.addConverter(new CustomerConverter());
-//		registry.addConverter(new ParameterParamConverter());
 	}
 	
 	@Bean
 	public ViewResolver viewResolver(){
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//		
-//		UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
-//		TilesViewResolver viewResolver = new TilesViewResolver();
-		
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();		
 		viewResolver.setPrefix("/WEB-INF/views/");
-		viewResolver.setSuffix(".jsp");
-//		viewResolver.setViewClass(TilesView.class);
-//		viewResolver;
-		
+		viewResolver.setSuffix(".jsp");		
 		return viewResolver;
 	}
 	
-//	@Bean
-//	public TilesConfigurer tilesConfigurer(){
-//		TilesConfigurer tilesConfigurer = new TilesConfigurer();
-//		tilesConfigurer.setDefinitions(new String[]{"/WEB-INF/tiles.xml"});
-//		return tilesConfigurer;
-//	}
-	
-	@Bean
-	public Validator validator(){
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		return factory.getValidator();
-	}
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {

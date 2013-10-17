@@ -8,9 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.nirdosh.data.model.Contact;
 import com.nirdosh.data.storage.service.ContactService;
+import com.nirdosh.web.profile.Dev;
+import com.nirdosh.web.profile.Test;
 
 
 @Service
+@Test
+@Dev
 public class ContactMockService implements ContactService{
 	
 	@Inject MockStorageService<Contact> storageService;
