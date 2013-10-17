@@ -3,10 +3,6 @@ package com.nirdosh.web.config;
 import java.net.UnknownHostException;
 import java.util.Locale;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,9 +19,6 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.mongodb.Mongo;
-import com.nirdosh.data.model.Contact;
-import com.nirdosh.data.mongo.service.MongoContactDbServices;
-import com.nirdosh.data.storage.service.DbServices;
 import com.nirdosh.web.converter.CustomerConverter;
 import com.nirdosh.web.interceptor.RequestCountInterceptor;
 
@@ -91,8 +84,4 @@ public class appConfig extends WebMvcConfigurerAdapter{
 		return new MongoTemplate(mongo, "customers");
 	}
 	
-	@Bean
-	DbServices<String, Contact> contactService(){
-		return new MongoContactDbServices();
-	}
 }

@@ -27,7 +27,7 @@ public class ContactMongoDbService implements ContactService{
 	}
 
 	public void delete(String key) {
-		mongoOperaions.remove(key);
+		mongoOperaions.remove(mongoOperaions.findById(key, Contact.class));
 		
 	}
 
