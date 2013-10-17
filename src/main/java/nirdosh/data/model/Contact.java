@@ -21,6 +21,8 @@ public class Contact implements Serializable{
 	private String telephone;
 	
 	private String email;
+	
+	private String address;
 
 	public String getId() {
 		return id;
@@ -62,6 +64,14 @@ public class Contact implements Serializable{
 		this.email = email;
 	}
 	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("Contact[id=%s firstName='%s' lastName='%s']",id,firstName,lastName );
