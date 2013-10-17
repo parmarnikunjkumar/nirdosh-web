@@ -31,7 +31,7 @@ import com.nirdosh.web.interceptor.RequestCountInterceptor;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages={"nirdosh.web","nirdosh.data"})
+@ComponentScan(basePackages={"com.nirdosh"})
 public class appConfig extends WebMvcConfigurerAdapter{
 	
 	private @Value("mongodb.host")

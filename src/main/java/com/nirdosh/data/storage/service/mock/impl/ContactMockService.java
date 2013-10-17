@@ -20,6 +20,9 @@ public class ContactMockService implements ContactService{
 	}
 
 	public void put(String key, Contact contact) {
+		if(key==null){
+			key = contact.getFirstName();
+		}
 		storageService.put(key, contact);		
 	}
 
@@ -29,8 +32,7 @@ public class ContactMockService implements ContactService{
 	}
 
 	public List<Contact> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return storageService.getAll();
 	}
 	
 	

@@ -2,6 +2,8 @@ package com.nirdosh.data.model;
 
 import java.io.Serializable;
 
+import javax.persistence.GeneratedValue;
+
 import org.springframework.data.annotation.Id;
 
 public class Contact implements Serializable{

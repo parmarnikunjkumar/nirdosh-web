@@ -1,6 +1,7 @@
 package com.nirdosh.data.storage.service.mongodb.impl;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -30,6 +31,11 @@ public class MongoDBStorageService<T extends Serializable> implements StorageSer
 	public void delete(String key) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public List<T> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
