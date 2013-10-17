@@ -3,8 +3,6 @@ package nirdosh.web.config;
 import java.net.UnknownHostException;
 import java.util.Locale;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
@@ -30,9 +28,6 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Query;
 import com.mongodb.Mongo;
 
 @EnableWebMvc
@@ -122,19 +117,4 @@ public class appConfig extends WebMvcConfigurerAdapter{
 	DbServices<String, Contact> contactService(){
 		return new MongoContactDbServices();
 	}
-	
-	@Bean
-	DatastoreService getGoogleDatastore(){
-		return DatastoreServiceFactory.getDatastoreService();
-	}
-	
-	@Bean
-	Query getCustomerTypeQuery(){
-		return new Query("Customer");
-	}
-	
-//	@Bean
-//	EntityManagerFactory getEMF(){
-//		return Persistence.createEntityManagerFactory("transactions-optional");
-//	}
 }
