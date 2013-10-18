@@ -12,4 +12,6 @@ public interface StorageService <K extends Serializable,T extends Serializable>{
 	void delete(K key);
 	
 	List<T> getAll();
+	
+	void update(T value);
 }

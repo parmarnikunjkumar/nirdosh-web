@@ -14,7 +14,7 @@
 <body>
 	<div align="center">
 		<h2>Customer Manager</h2>
-		<form:form method="post" action="addCustomer" commandName="customer">
+		<form:form method="post" action="updateCustomer" commandName="customer">
 			<table>
 				<tr>
 					<td><form:label path="firstName"><spring:message code="label.firstname"/> </form:label></td>
@@ -36,26 +36,15 @@
 					<td><form:input path="telephone"/></td>
 					<td><form:errors path="telephone"/></td>				
 				<tr>	
+				<tr>
+					<td><form:label path="customerCardType"><spring:message code="label.customercardtype"/> </form:label></td>
+					<td><form:input path="customerCardType"/></td>
+					<td><form:errors path="customerCardType"/></td>				
+				<tr>
 					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.addcontact"/>"> </td>
 				</tr>
 			</table>
 		</form:form>
-		
-		<table border="1">
-			<c:forEach var="customer" items="${customerList}">
-				<tr>
-					<!--  
-					<td>${contact.id}</td>
-					-->
-					<td>${customer.firstName}</td>
-					<td>${customer.lastName}</td>
-					<td>${customer.email}</td>
-					<td><input type="button" value="delete" onclick="location.href='deleteCustomer?id=${customer.id}'"></td>
-					<td><input type="button" value="edit" onclick="location.href='editCustomer?id=${customer.id}'"></td>
-				</tr>
-			</c:forEach>
-		</table>
-
 		</div>
 </body>
 </html>

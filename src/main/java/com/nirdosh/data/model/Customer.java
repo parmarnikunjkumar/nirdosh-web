@@ -25,6 +25,10 @@ public class Customer implements Serializable {
 
 	private String telephone;
 
+	private String customerCardType;
+	
+	private String customerCardId; 
+	
 	public String getId() {
 		return id;
 	}
@@ -63,6 +67,23 @@ public class Customer implements Serializable {
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
+	}
+
+	
+	public String getCustomerCardId() {
+		return customerCardId;
+	}
+
+	public void setCustomerCardId(String customerCardId) {
+		this.customerCardId = customerCardId;
+	}
+
+	public String getCustomerCardType() {
+		return customerCardType;
+	}
+
+	public void setCustomerCardType(String customerCardType) {
+		this.customerCardType = customerCardType;
 	}
 
 	@Override

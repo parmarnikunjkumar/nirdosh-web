@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -16,7 +15,6 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.nirdosh.web.converter.CustomerConverter;
 import com.nirdosh.web.interceptor.RequestCountInterceptor;
 
 @EnableWebMvc
@@ -24,10 +22,10 @@ import com.nirdosh.web.interceptor.RequestCountInterceptor;
 @ComponentScan(basePackages={"com.nirdosh"})
 public class AppConfig extends WebMvcConfigurerAdapter{
 	
-	@Override
-	public void addFormatters(FormatterRegistry registry) {		
-		registry.addConverter(new CustomerConverter());
-	}
+//	@Override
+//	public void addFormatters(FormatterRegistry registry) {		
+//		registry.addConverter(new CustomerConverter());
+//	}
 	
 	@Bean
 	public ViewResolver viewResolver(){

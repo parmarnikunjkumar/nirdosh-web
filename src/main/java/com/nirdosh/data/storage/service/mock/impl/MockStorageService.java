@@ -39,4 +39,9 @@ public class MockStorageService<T extends Serializable> implements StorageServic
 		return new ArrayList<T>(cache.values());
 	}
 
+	public void update(T value) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
