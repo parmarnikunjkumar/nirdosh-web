@@ -12,7 +12,7 @@
   	</init-param>
   	<init-param>
   		<param-name>contextConfigLocation</param-name>
-  		<param-value>com.nirdosh.web.config.appConfig</param-value>
+  		<param-value>com.nirdosh.web.config.AppConfig,com.nirdosh.web.config.PropertyConfig</param-value>
   	</init-param>
   	<load-on-startup>1</load-on-startup>
   </servlet>

@@ -1,14 +1,12 @@
 package com.nirdosh.web.config;
 
-import java.net.UnknownHostException;
 import java.util.Locale;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -18,17 +16,13 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.mongodb.Mongo;
 import com.nirdosh.web.converter.CustomerConverter;
 import com.nirdosh.web.interceptor.RequestCountInterceptor;
 
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages={"com.nirdosh"})
-public class appConfig extends WebMvcConfigurerAdapter{
-	
-	private @Value("mongodb.host")
-	String mongoDbHost;
+public class AppConfig extends WebMvcConfigurerAdapter{
 	
 	@Override
 	public void addFormatters(FormatterRegistry registry) {		
@@ -70,18 +64,11 @@ public class appConfig extends WebMvcConfigurerAdapter{
 		return messageSource;
 	}
 	
-	
-	/**
-	 * Mongodb connection
-	 */
 	@Bean
-	Mongo mongo() throws UnknownHostException{
-		return new Mongo("localhost");
+	public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
+	    return new PropertySourcesPlaceholderConfigurer();
 	}
 	
-	@Bean
-	MongoTemplate mongoOperations(Mongo mongo){
-		return new MongoTemplate(mongo, "customers");
-	}
+
 	
 }

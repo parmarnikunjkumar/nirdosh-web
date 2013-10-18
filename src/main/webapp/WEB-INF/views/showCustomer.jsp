@@ -12,26 +12,26 @@
 </head>
 <body>
 	<div align="center">
-		<h2>domainContacts</h2>
+		<h2>Customer</h2>
 		<table cellspacing="2" cellpadding="2" border="2">
 			<tr>
 				<td><spring:message code="label.firstname" /></td>
-				<td>${domainContact.firstName}</td>
+				<td>${customer.firstName}</td>
 			</tr>
 			<tr>
 				<td><spring:message code="label.lastname" /></td>
-				<td>${domainContact.lastName}</td>
+				<td>${customer.lastName}</td>
 			</tr>
 			<tr>
 				<td><spring:message code="label.email" /></td>
-				<td>${domainContact.email}</td>
+				<td>${customer.email}</td>
 			</tr>
 			<tr>
 				<td><spring:message code="label.telephone" /></td>
-				<td>${domainContact.telephone}</td>
+				<td>${customer.telephone}</td>
 			</tr>
 		</table>
-		<button onclick="location.href='contact'" value="OK" > OK</button>
+		<button onclick="location.href='customer'" value="OK" > OK</button>
 
 	</div>
 </body>

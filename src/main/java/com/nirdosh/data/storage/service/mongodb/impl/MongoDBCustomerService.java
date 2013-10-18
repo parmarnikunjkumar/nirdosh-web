@@ -18,17 +18,17 @@ public class MongoDBCustomerService extends MongoDBService<Customer>{
 		if(!mongoOperations.collectionExists(Customer.class)){
 			mongoOperations.createCollection(Customer.class);
 		}
-		customer.setCustomerID(UUID.randomUUID().toString());
+		customer.setId(UUID.randomUUID().toString());
 		mongoOperations.save(customer,COLLECTION_NAME);
 		
 	}
 
 	public Customer get(String key) {
-		return mongoOperations.findById(key, Customer.class);
+		return mongoOperations.findById(key,Customer.class,COLLECTION_NAME);
 	}
 
 	public void delete(String key) {
-		mongoOperations.remove(get(key));
+		mongoOperations.remove(get(key),COLLECTION_NAME);
 		
 	}
 

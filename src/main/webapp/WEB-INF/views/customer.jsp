@@ -13,8 +13,8 @@
 </head>
 <body>
 	<div align="center">
-		<h2>Contact Manager</h2>
-		<form:form method="post" action="addContact" commandName="domainContact">
+		<h2>Customer Manager</h2>
+		<form:form method="post" action="addCustomer" commandName="customer">
 			<table>
 				<tr>
 					<td><form:label path="firstName"><spring:message code="label.firstname"/> </form:label></td>
@@ -43,15 +43,15 @@
 		</form:form>
 		
 		<table border="1">
-			<c:forEach var="contact" items="${contactList}">
+			<c:forEach var="customer" items="${customerList}">
 				<tr>
 					<!--  
 					<td>${contact.id}</td>
 					-->
-					<td>${contact.firstName}</td>
-					<td>${contact.lastName}</td>
-					<td>${contact.email}</td>
-					<td><input type="button" value="delete" onclick="location.href='delete?id=${contact.id}'"></td>
+					<td>${customer.firstName}</td>
+					<td>${customer.lastName}</td>
+					<td>${customer.email}</td>
+					<td><input type="button" value="delete" onclick="location.href='deleteCustomer?id=${customer.id}'"></td>
 				</tr>
 			</c:forEach>
 		</table>
