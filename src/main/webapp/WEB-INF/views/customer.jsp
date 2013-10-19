@@ -48,13 +48,16 @@
 					<td>${contact.id}</td>
 					-->
 					<td>${customer.firstName}</td>
+					<!--  
 					<td>${customer.lastName}</td>
 					<td>${customer.email}</td>
+					-->
 					<td><input type="button" value="delete" onclick="location.href='deleteCustomer?id=${customer.id}'"></td>
 					<td><input type="button" value="edit" onclick="location.href='editCustomer?id=${customer.id}'"></td>
 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'">
 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'">
 					</td>
+					<td>${customer.entriesLeft}</td>
 				</tr>
 			</c:forEach>
 		</table>

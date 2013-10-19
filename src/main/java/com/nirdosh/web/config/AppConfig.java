@@ -36,7 +36,6 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 		return viewResolver;
 	}
 	
-	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();

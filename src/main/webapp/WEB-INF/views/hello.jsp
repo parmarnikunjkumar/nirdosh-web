@@ -3,6 +3,6 @@
 	<title>Spring 3.0 MVC</title>
 </head>
 	<body>
-		${message}
+		Hi
 	</body>
 </html>
