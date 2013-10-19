@@ -27,7 +27,7 @@ public class Customer implements Serializable {
 
 	private String customerCardType;
 	
-	private String customerCardId; 
+	private int entriesLeft;
 	
 	public String getId() {
 		return id;
@@ -69,21 +69,20 @@ public class Customer implements Serializable {
 		this.telephone = telephone;
 	}
 
-	
-	public String getCustomerCardId() {
-		return customerCardId;
-	}
-
-	public void setCustomerCardId(String customerCardId) {
-		this.customerCardId = customerCardId;
-	}
-
 	public String getCustomerCardType() {
 		return customerCardType;
 	}
 
 	public void setCustomerCardType(String customerCardType) {
 		this.customerCardType = customerCardType;
+	}	
+
+	public int getEntriesLeft() {
+		return entriesLeft;
+	}
+
+	public void setEntriesLeft(int entriesLeft) {
+		this.entriesLeft = entriesLeft;
 	}
 
 	@Override

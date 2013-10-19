@@ -52,7 +52,7 @@ public class CustomerController {
 			model.addAttribute("result", result);
 			return "customer";
 		}else{
-			customerStorageService.put(customer.getFirstName(), customer);
+			customerStorageService.put(UUID.randomUUID().toString(), customer);
 			return "showCustomer";
 		}
 		
@@ -74,26 +74,26 @@ public class CustomerController {
 	@RequestMapping("/updateCustomer")
 	public ModelAndView updateCustomer(Customer customer,Model model){
 		
-		if(StringUtils.isNotEmpty(customer.getCustomerCardId())){
-			
-		}else
-			// create new customer card
-		{
-			if(customer.getCustomerCardType().equals("10")){
-				CustomerCard customerCard = new CustomerCard();
-				customerCard.setEntriesLeft(10);
-				customerCard.setType(10);
-				
-				// set the customercard id to be the customers customercard id
-				String key = UUID.randomUUID().toString();
-				customer.setCustomerCardId(key);
-				customerCardStorageService.put(key, customerCard);
-				// update the customer now
-				customerStorageService.update(customer);
-				
-			}
-		}
+		customerStorageService.update(customer);
 		
+		return new ModelAndView("redirect:customer");
+	}
+	
+	@RequestMapping("/incrementCount")
+	public ModelAndView incrementCount(String id){
+		System.out.println("ID:"+id);
+		Customer customer = customerStorageService.get(id);
+		customer.setEntriesLeft(customer.getEntriesLeft()+1);
+		customerStorageService.update(customer);
+		return new ModelAndView("redirect:customer");
+	}
+	
+	@RequestMapping("/decrementCount")
+	public ModelAndView decrementCount(String id){
+		System.out.println("ID:"+id);
+		Customer customer = customerStorageService.get(id);
+		customer.setEntriesLeft(customer.getEntriesLeft()-1);
+		customerStorageService.update(customer);
 		return new ModelAndView("redirect:customer");
 	}
 

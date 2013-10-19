@@ -41,7 +41,7 @@
 			</table>
 		</form:form>
 		
-		<table border="1">
+		<table frame="box">
 			<c:forEach var="customer" items="${customerList}">
 				<tr>
 					<!--  
@@ -52,6 +52,9 @@
 					<td>${customer.email}</td>
 					<td><input type="button" value="delete" onclick="location.href='deleteCustomer?id=${customer.id}'"></td>
 					<td><input type="button" value="edit" onclick="location.href='editCustomer?id=${customer.id}'"></td>
+					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'">
+						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'">
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

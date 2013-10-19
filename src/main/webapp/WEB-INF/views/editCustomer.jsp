@@ -17,6 +17,11 @@
 		<form:form method="post" action="updateCustomer" commandName="customer">
 			<table>
 				<tr>
+					<td><form:label path="id"><spring:message code="label.id"/> </form:label></td>
+					<td><form:input path="id"/></td>
+					<td><form:errors path="id"/></td>				
+				</tr>
+				<tr>
 					<td><form:label path="firstName"><spring:message code="label.firstname"/> </form:label></td>
 					<td><form:input path="firstName"/></td>
 					<td><form:errors path="firstName"/></td>				
@@ -35,13 +40,19 @@
 					<td><form:label path="telephone"><spring:message code="label.telephone"/> </form:label></td>
 					<td><form:input path="telephone"/></td>
 					<td><form:errors path="telephone"/></td>				
-				<tr>	
+				</tr>	
 				<tr>
 					<td><form:label path="customerCardType"><spring:message code="label.customercardtype"/> </form:label></td>
 					<td><form:input path="customerCardType"/></td>
 					<td><form:errors path="customerCardType"/></td>				
+				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.addcontact"/>"> </td>
+					<td><form:label path="entriesLeft"><spring:message code="label.entriesleft"/> </form:label></td>
+					<td><form:input path="entriesLeft"/></td>
+					<td><form:errors path="entriesLeft"/></td>				
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.ok"/>"> </td>
 				</tr>
 			</table>
 		</form:form>

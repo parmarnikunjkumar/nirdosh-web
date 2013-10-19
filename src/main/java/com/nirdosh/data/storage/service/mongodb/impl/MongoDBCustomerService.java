@@ -1,7 +1,6 @@
 package com.nirdosh.data.storage.service.mongodb.impl;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ public class MongoDBCustomerService extends MongoDBService<Customer>{
 	private static final String COLLECTION_NAME = "customers";
 
 	public void put(String key, Customer customer) {
-		customer.setId(UUID.randomUUID().toString());
+		customer.setId(key);
 		mongoOperations.save(customer,COLLECTION_NAME);
 		
 	}
@@ -37,7 +36,7 @@ public class MongoDBCustomerService extends MongoDBService<Customer>{
 
 	public void update(Customer value) {
 		
-		mongoOperations.insert(value,COLLECTION_NAME);
+		mongoOperations.save(value, COLLECTION_NAME);
 		
 	}
 
