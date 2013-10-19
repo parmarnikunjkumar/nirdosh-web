@@ -16,7 +16,7 @@
 	</div><!-- /header -->
 
 	<div data-role="listview" data-icon="star" data-theme="b">	
-		<li><a href="mobile/customers">CUSTOMERS</a></li>	
+		<li><a href="customers">CUSTOMERS</a></li>	
 		<li><a href="">ADD</a></li>
 		<li><a href="">EDIT</a></li>
 		

@@ -1,5 +1,7 @@
 package com.nirdosh.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -11,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,12 +21,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.nirdosh.data.model.Address;
 import com.nirdosh.data.model.Customer;
 import com.nirdosh.data.model.CustomerCard;
 import com.nirdosh.data.storage.service.StorageService;
 
 @Controller
 public class CustomerController {
+	
+	@Inject MongoTemplate mongoOperaions;
+	
 	@Autowired
 	@Qualifier("customer")
 	StorageService<String, Customer> customerStorageService;
@@ -51,7 +58,7 @@ public class CustomerController {
 		if(result.hasErrors()){
 			model.addAttribute("result", result);
 			return "customer";
-		}else{
+		}else{			
 			customerStorageService.put(UUID.randomUUID().toString(), customer);
 			return "showCustomer";
 		}

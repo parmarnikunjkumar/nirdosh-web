@@ -1,11 +1,13 @@
 package com.nirdosh.data.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+
 public class Customer implements Serializable {
 
 	/**
@@ -27,6 +29,9 @@ public class Customer implements Serializable {
 	private String customerCardType;
 	
 	private int entriesLeft;
+	
+	@DBRef
+	private List<Address> addresses;
 	
 	public String getId() {
 		return id;
@@ -82,6 +87,14 @@ public class Customer implements Serializable {
 
 	public void setEntriesLeft(int entriesLeft) {
 		this.entriesLeft = entriesLeft;
+	}	
+
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 	@Override
