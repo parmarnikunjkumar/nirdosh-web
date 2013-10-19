@@ -32,6 +32,9 @@ public class Customer implements Serializable {
 	
 	@DBRef
 	private List<Address> addresses;
+
+	@DBRef
+	private PaymentInfo paymentInfo;
 	
 	public String getId() {
 		return id;
@@ -95,6 +98,14 @@ public class Customer implements Serializable {
 
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
+	}	
+
+	public PaymentInfo getPaymentInfo() {
+		return paymentInfo;
+	}
+
+	public void setPaymentInfo(PaymentInfo paymentInfo) {
+		this.paymentInfo = paymentInfo;
 	}
 
 	@Override

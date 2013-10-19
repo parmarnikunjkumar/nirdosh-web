@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.nirdosh.data.model.Address;
 import com.nirdosh.data.model.Customer;
 import com.nirdosh.data.model.CustomerCard;
+import com.nirdosh.data.model.PaymentInfo;
 import com.nirdosh.data.storage.service.StorageService;
 
 @Controller
@@ -80,6 +81,9 @@ public class CustomerController {
 	
 	@RequestMapping("/updateCustomer")
 	public ModelAndView updateCustomer(Customer customer,Model model){
+		
+		PaymentInfo paymentInfo = customer.getPaymentInfo();
+		mongoOperaions.save(paymentInfo);
 		
 		customerStorageService.update(customer);
 		

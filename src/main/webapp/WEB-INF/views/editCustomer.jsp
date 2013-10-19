@@ -52,6 +52,15 @@
 					<td><form:errors path="entriesLeft"/></td>				
 				</tr>
 				<tr>
+					<td><form:label path="paymentInfo.amountPaid"><spring:message code="label.amountpaid"/> </form:label></td>
+					<td><form:input path="paymentInfo.amountPaid"/></td>
+					<td><form:errors path="paymentInfo.amountPaid"/></td>
+					
+					<td><form:label path="paymentInfo.currency"><spring:message code="label.currency"/> </form:label></td>
+					<td><form:input path="paymentInfo.currency"/></td>
+					<td><form:errors path="paymentInfo.currency"/></td>			
+				</tr>
+				<tr>
 					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.ok"/>"> </td>
 				</tr>
 			</table>

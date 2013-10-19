@@ -41,15 +41,23 @@
 			</table>
 		</form:form>
 		
-		<table frame="box">
+		<table frame="box" border="1">
+			<tr><th>NAME</th>
+    			<th>LAST NAME</th>
+    			<th>DELETE</th>
+    			<th>EDIT</th>
+    			<th> + / -</th>
+    			<th>VISITS</th>
+  			</tr>
 			<c:forEach var="customer" items="${customerList}">
 				<tr>
 					<!--  
 					<td>${contact.id}</td>
 					-->
 					<td>${customer.firstName}</td>
-					<!--  
+					  
 					<td>${customer.lastName}</td>
+					<!--
 					<td>${customer.email}</td>
 					-->
 					<td><input type="button" value="delete" onclick="location.href='deleteCustomer?id=${customer.id}'"></td>
