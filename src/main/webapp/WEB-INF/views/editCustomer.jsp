@@ -37,15 +37,12 @@
 					<td><form:errors path="email"/></td>
 				</tr>
 				<tr>
-					<td><form:label path="telephone"><spring:message code="label.telephone"/> </form:label></td>
-					<td><form:input path="telephone"/></td>
-					<td><form:errors path="telephone"/></td>				
+					<td><form:label path="cardType"><spring:message code="label.cardtype"/> </form:label></td>
+					<td><form:select path="cardType">
+							<form:options/>
+						</form:select> </td>
+					<td><form:errors path="cardType"/></td>
 				</tr>	
-				<tr>
-					<td><form:label path="customerCardType"><spring:message code="label.customercardtype"/> </form:label></td>
-					<td><form:input path="customerCardType"/></td>
-					<td><form:errors path="customerCardType"/></td>				
-				</tr>
 				<tr>
 					<td><form:label path="entriesLeft"><spring:message code="label.entriesleft"/> </form:label></td>
 					<td><form:input path="entriesLeft"/></td>
@@ -56,9 +53,9 @@
 					<td><form:input path="paymentInfo.amountPaid"/></td>
 					<td><form:errors path="paymentInfo.amountPaid"/></td>
 					
-					<td><form:label path="paymentInfo.currency"><spring:message code="label.currency"/> </form:label></td>
-					<td><form:input path="paymentInfo.currency"/></td>
-					<td><form:errors path="paymentInfo.currency"/></td>			
+					<td><form:label path="paymentInfo.amountToPay"><spring:message code="label.amounttopay"/> </form:label></td>
+					<td><form:input path="paymentInfo.amountToPay"/></td>
+					<td><form:errors path="paymentInfo.amountToPay"/></td>			
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.ok"/>"> </td>

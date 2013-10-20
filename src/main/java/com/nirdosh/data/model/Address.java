@@ -3,11 +3,7 @@ package com.nirdosh.data.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 public class Address {
-
-	@Id
-	private String id;
 	
 	private String streetName;
 	
@@ -18,14 +14,6 @@ public class Address {
 	private String state;
 	
 	private String country;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getStreetName() {
 		return streetName;

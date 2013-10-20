@@ -1,32 +1,28 @@
 package com.nirdosh.data.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 public class PaymentInfo {
-
-	@Id
-	private String id;
 	
-	private String amountPaid;
+	private double amountPaid;
+	
+	private double amountToPay;
 	
 	private String currency;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getAmountPaid() {
+	
+	public double getAmountPaid() {
 		return amountPaid;
 	}
 
-	public void setAmountPaid(String amountPaid) {
+	public void setAmountPaid(double amountPaid) {
 		this.amountPaid = amountPaid;
+	}
+
+	public double getAmountToPay() {
+		return amountToPay;
+	}
+
+	public void setAmountToPay(double amountToPay) {
+		this.amountToPay = amountToPay;
 	}
 
 	public String getCurrency() {

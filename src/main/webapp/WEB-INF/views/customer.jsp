@@ -32,10 +32,6 @@
 					<td><form:errors path="email"/></td>
 				</tr>
 				<tr>
-					<td><form:label path="telephone"><spring:message code="label.telephone"/> </form:label></td>
-					<td><form:input path="telephone"/></td>
-					<td><form:errors path="telephone"/></td>				
-				<tr>	
 					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.addcontact"/>"> </td>
 				</tr>
 			</table>

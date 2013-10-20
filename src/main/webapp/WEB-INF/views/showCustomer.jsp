@@ -26,10 +26,6 @@
 				<td><spring:message code="label.email" /></td>
 				<td>${customer.email}</td>
 			</tr>
-			<tr>
-				<td><spring:message code="label.telephone" /></td>
-				<td>${customer.telephone}</td>
-			</tr>
 		</table>
 		<button onclick="location.href='customer'" value="OK" > OK</button>
 

@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.nirdosh.enums.CardType;
+
 
 public class Customer implements Serializable {
 
@@ -24,16 +26,14 @@ public class Customer implements Serializable {
 
 	private String email;
 
-	private String telephone;
-
-	private String customerCardType;
+	private List<Telephone> telephones;
+	
+	private CardType cardType;
 	
 	private int entriesLeft;
 	
-	@DBRef
 	private List<Address> addresses;
-
-	@DBRef
+	
 	private PaymentInfo paymentInfo;
 	
 	public String getId() {
@@ -66,23 +66,23 @@ public class Customer implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	public String getCustomerCardType() {
-		return customerCardType;
-	}
-
-	public void setCustomerCardType(String customerCardType) {
-		this.customerCardType = customerCardType;
 	}	
+
+	public List<Telephone> getTelephones() {
+		return telephones;
+	}
+
+	public void setTelephones(List<Telephone> telephones) {
+		this.telephones = telephones;
+	}
+
+	public CardType getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(CardType cardType) {
+		this.cardType = cardType;
+	}
 
 	public int getEntriesLeft() {
 		return entriesLeft;
