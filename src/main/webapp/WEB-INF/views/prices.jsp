@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 	<body>
-		<form:form acceptCharset="addPrice" method="post" commandName="price">
+		<form:form action="addPrice" method="post" commandName="price">
 			<table>
 				<tr>
 				<td><form:label path="value">Value</form:label>
@@ -27,6 +27,7 @@
 		<table frame="box" border="1">
 			<tr><th>VALUE</th>
     			<th>CARD TYPE</th>
+    			<th>EDIT</th>
   			</tr>
 			<c:forEach var="price" items="${priceList}">
 				<tr>
@@ -39,10 +40,13 @@
 					<!--
 					<td>${customer.email}</td>
 					-->
-					<td><input type="button" value="edit" onclick="location.href='editPrice?$price'"></td>
+					<td><input type="button" value="edit" onclick="location.href='editPrice?id=${price.id}'">
+						<input type="button" value="delete" onclick="location.href='deletePrice?id=${price.id}'"></td>
 				</tr>
 			</c:forEach>
 		</table>
+		
+		<input type="button" value="home" onclick="location.href='home'">
 		
 	</body>
 </html>

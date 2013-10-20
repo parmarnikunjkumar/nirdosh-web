@@ -26,6 +26,18 @@
 				<td><spring:message code="label.email" /></td>
 				<td>${customer.email}</td>
 			</tr>
+			<tr>
+					<td><spring:message code="label.cardtype"/></td>
+					<td>${customer.cardType} </td>
+				</tr>
+			<tr>
+				<td><spring:message code="label.entriesleft" /></td>
+				<td>${customer.entriesLeft}</td>
+			</tr>
+			<tr>
+				<td><spring:message code="label.amountpaid" /></td>
+				<td>${customer.paymentInfo.amountPaid}</td>
+			</tr>
 		</table>
 		<button onclick="location.href='customer'" value="OK" > OK</button>
 

@@ -4,16 +4,11 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <body>
-<h2>Hello World!</h2>
+<h2>SMART BODY HEALTH</h2> 
 
-<input type="submit" name="customer" value="customers">
+<input type="button" value="CUSTOMER" onclick="location.href='customer'">
+<br>
+<input type="button" value="PRICE" onclick="location.href='price'">
 
-<form:form method="get" action="customer">
-	<input type="submit" value="customers">
-</form:form>
-
-<form:form method="get" action="price">
-	<input type="submit"  value="Prices">
-</form:form>
 </body>
 </html>
