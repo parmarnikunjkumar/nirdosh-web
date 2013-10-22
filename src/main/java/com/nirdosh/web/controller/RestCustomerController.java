@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,10 +22,13 @@ public class RestCustomerController {
 
 	@Inject @Qualifier("customer") StorageService<String, Customer> customerStorageService;
 	
+	@Inject MongoTemplate mongoOperations;
+	
 	@RequestMapping("/all")
 	@ResponseBody
 	public List<Customer> getAllCustomer(){
-		return customerStorageService.getAll();
+		System.out.println("All request");
+		return mongoOperations.findAll(Customer.class);
 	}
 	
 	@RequestMapping("/{id}")

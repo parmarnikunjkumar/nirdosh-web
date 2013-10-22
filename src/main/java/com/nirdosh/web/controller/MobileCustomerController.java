@@ -13,14 +13,14 @@ public class MobileCustomerController {
 
 	@RequestMapping
 	public String welcome(HttpServletRequest request, Model model){
-		return "mobile/welcome";
+		return "mobile/welcome-mobile";
 	}
 	@RequestMapping(value="/hello", method= RequestMethod.GET)
 	public String hello(HttpServletRequest request, Model model){
 		return "hello";
 	}
 	
-	@RequestMapping(value="/customers", method= RequestMethod.GET)
+	@RequestMapping(value="customers", method= RequestMethod.GET)
 	public String listAll(HttpServletRequest request, Model model){
 		return "mobile/customers";
 	}

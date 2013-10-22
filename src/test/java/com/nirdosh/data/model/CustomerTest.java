@@ -28,7 +28,7 @@ public class CustomerTest {
 		 mongoOperations.dropCollection(Address.class);
 		
 		PaymentInfo payment = new PaymentInfo();
-		payment.setAmountPaid(12);
+		payment.setCurrentBalance(12);
 		payment.setCurrency("Euro");
 //		mongoOperations.save(payment);
 		
@@ -60,7 +60,7 @@ public class CustomerTest {
 		
 		Customer customer = mongoOperations.findOne(query,Customer.class);
 		assertEquals("im Tal", customer.getAddresses().get(0).getStreetName());
-		assertEquals("150", customer.getPaymentInfo().getAmountPaid());
+		assertEquals("150", customer.getPaymentInfo().getCurrentBalance());
 		
 	}
 

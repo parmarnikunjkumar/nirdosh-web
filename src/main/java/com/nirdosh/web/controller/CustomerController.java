@@ -38,8 +38,13 @@ public class CustomerController {
 			.getLogger(CustomerController.class);
 
 	@RequestMapping(value = "/")
-	public String welcome() {
+	public String index() {
 		return "welcome";
+	}
+	
+	@RequestMapping(value = "/index")
+	public String welcome() {
+		return "index";
 	}
 
 	@RequestMapping(value = "/customer", method = RequestMethod.GET)
@@ -65,7 +70,7 @@ public class CustomerController {
 			Price price = mongoOperaions.findOne(query, Price.class);
 			setPrice(customer, price);
 			
-			customer.setEntriesLeft(customer.getCardType().getNumber());
+			customer.setEntriesLeft(customer.getCardType().getNumber());			
 			mongoOperaions.save(customer);
 			return "showCustomer";
 		}
@@ -102,6 +107,7 @@ public class CustomerController {
 	public ModelAndView incrementCount(String id) {
 		Customer customer = mongoOperaions.findById(id, Customer.class);
 		customer.setEntriesLeft(customer.getEntriesLeft() + 1);
+		incrementCurrentBalance(customer);
 		mongoOperaions.save(customer);
 		return new ModelAndView("redirect:customer");
 	}
@@ -111,7 +117,13 @@ public class CustomerController {
 		System.out.println("ID:" + id);
 		Customer customer = mongoOperaions.findById(id, Customer.class);
 		customer.setEntriesLeft(customer.getEntriesLeft() - 1);
+		decrementCurrentBalance(customer);
 		mongoOperaions.save(customer);
+		return new ModelAndView("redirect:customer");
+	}
+	
+	@RequestMapping("/cancel")
+	public ModelAndView cancel() {
 		return new ModelAndView("redirect:customer");
 	}
 
@@ -119,9 +131,33 @@ public class CustomerController {
 
 	private void setPrice(Customer customer, Price price) {
 		if (price != null && customer.getPaymentInfo()!=null) {
-			double priceToPay = price.getValue()-customer.getPaymentInfo().getAmountPaid();
+			double priceToPay = price.getValue()-customer.getPaymentInfo().getCurrentBalance();
+			if(customer.getEntriesLeft()==0 && priceToPay==0 && customer.getPaymentInfo().getCurrentBalance()!=0){
+				customer.setEntriesLeft(customer.getCardType().getNumber());
+			}
 			customer.getPaymentInfo().setAmountToPay(priceToPay);
 		}
+	}
+	
+	private void decrementCurrentBalance(Customer customer){
+		Price price = getPrice(customer.getCardType());
+		double currentBalance = customer.getPaymentInfo().getCurrentBalance();
+		currentBalance = currentBalance - (price.getValue()/customer.getCardType().getNumber());
+		customer.getPaymentInfo().setCurrentBalance(currentBalance);
+		
+	}
+	
+	private void incrementCurrentBalance(Customer customer){
+		Price price = getPrice(customer.getCardType());
+		double currentBalance = customer.getPaymentInfo().getCurrentBalance();
+		currentBalance = currentBalance + (price.getValue()/customer.getCardType().getNumber());
+		customer.getPaymentInfo().setCurrentBalance(currentBalance);
+		
+	}
+	
+	private Price getPrice(CardType cardType){
+		Query query = new Query(Criteria.where("cardType").is(cardType));
+		return mongoOperaions.findOne(query, Price.class);
 	}
 
 }

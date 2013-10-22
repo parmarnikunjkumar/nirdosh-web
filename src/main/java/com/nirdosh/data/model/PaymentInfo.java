@@ -3,19 +3,11 @@ package com.nirdosh.data.model;
 
 public class PaymentInfo {
 	
-	private double amountPaid;
-	
 	private double amountToPay;
 	
 	private String currency;
 	
-	public double getAmountPaid() {
-		return amountPaid;
-	}
-
-	public void setAmountPaid(double amountPaid) {
-		this.amountPaid = amountPaid;
-	}
+	private double currentBalance;
 
 	public double getAmountToPay() {
 		return amountToPay;
@@ -31,6 +23,14 @@ public class PaymentInfo {
 
 	public void setCurrency(String currency) {
 		this.currency = currency;
+	}
+
+	public double getCurrentBalance() {
+		return currentBalance;
+	}
+
+	public void setCurrentBalance(double currentBalance) {
+		this.currentBalance = currentBalance;
 	}
 	
 }

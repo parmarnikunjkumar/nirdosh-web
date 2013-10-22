@@ -28,6 +28,10 @@ public class Customer implements Serializable {
 
 	private List<Telephone> telephones;
 	
+	private String mobile;
+	
+	private String home;
+	
 	private CardType cardType;
 	
 	private int entriesLeft;
@@ -106,6 +110,24 @@ public class Customer implements Serializable {
 
 	public void setPaymentInfo(PaymentInfo paymentInfo) {
 		this.paymentInfo = paymentInfo;
+	}
+	
+	
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getHome() {
+		return home;
+	}
+
+	public void setHome(String home) {
+		this.home = home;
 	}
 
 	@Override

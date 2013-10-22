@@ -32,6 +32,16 @@
 					<td><form:errors path="email"/></td>
 				</tr>
 				<tr>
+					<td><form:label path="mobile"><spring:message code="label.mobile"/> </form:label></td>
+					<td><form:input path="mobile"/></td>
+					<td><form:errors path="mobile"/></td>
+				</tr>
+				<tr>
+					<td><form:label path="home"><spring:message code="label.home"/> </form:label></td>
+					<td><form:input path="home"/></td>
+					<td><form:errors path="home"/></td>
+				</tr>
+				<tr>
 					<td><form:label path="cardType"><spring:message code="label.cardtype"/> </form:label></td>
 					<td><form:select path="cardType">
 						<form:options/>
@@ -39,10 +49,10 @@
 					<td><form:errors path="cardType"/></td>
 				</tr>
 				<tr>
-					<td><form:label path="paymentInfo.amountPaid"><spring:message code="label.amountpaid"/> </form:label></td>
-					<td><form:input path="paymentInfo.amountPaid"/></td>
-					<td><form:errors path="paymentInfo.amountPaid"/></td>
-				</tr>
+					<td><form:label path="paymentInfo.currentBalance"><spring:message code="label.currentbalance"/> </form:label></td>
+					<td><form:input path="paymentInfo.currentBalance"/></td>
+					<td><form:errors path="paymentInfo.currentBalance"/></td>
+				</tr>				
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.addcontact"/>"> </td>
 				</tr>
@@ -58,7 +68,14 @@
     			<th>VISITS</th>
   			</tr>
 			<c:forEach var="customer" items="${customerList}">
-				<tr>
+				<c:choose>
+					<c:when test="${customer.paymentInfo.currentBalance <= 0}">
+						<tr bgcolor="#FF0000">
+					</c:when>
+					<c:otherwise>
+						<tr>
+					</c:otherwise>
+				</c:choose>
 					<!--  
 					<td>${contact.id}</td>
 					-->

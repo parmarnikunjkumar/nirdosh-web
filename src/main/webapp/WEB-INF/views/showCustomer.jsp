@@ -35,8 +35,8 @@
 				<td>${customer.entriesLeft}</td>
 			</tr>
 			<tr>
-				<td><spring:message code="label.amountpaid" /></td>
-				<td>${customer.paymentInfo.amountPaid}</td>
+				<td><spring:message code="label.currentbalance" /></td>
+				<td>${customer.paymentInfo.currentBalance}</td>
 			</tr>
 		</table>
 		<button onclick="location.href='customer'" value="OK" > OK</button>

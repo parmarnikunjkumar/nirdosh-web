@@ -8,6 +8,7 @@
 
 <input type="button" value="CUSTOMER" onclick="location.href='customer'">
 <br>
+<br>
 <input type="button" value="PRICE" onclick="location.href='price'">
 
 </body>
