@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nirdosh.data.model.Customer;
-import com.nirdosh.data.storage.service.StorageService;
+import com.nirdosh.service.CustomerService;
 
 @Controller
 @RequestMapping("/rest/customer")
 public class RestCustomerController {
 
-	@Inject @Qualifier("customer") StorageService<String, Customer> customerStorageService;
+	@Inject CustomerService customerService;
 	
 	@Inject MongoTemplate mongoOperations;
 	
@@ -34,30 +33,31 @@ public class RestCustomerController {
 	@RequestMapping("/{id}")
 	@ResponseBody
 	public Customer getCustomer(@PathVariable String id){
-		return customerStorageService.get(id);
+		return customerService.getCustomerById(id);
 	}
 	
 	@RequestMapping("/{id}/entries/decrement")
 	@ResponseBody
 	public void decrementEntryCount(@PathVariable String id){
-		Customer customer = customerStorageService.get(id);
+		Customer customer = customerService.getCustomerById(id);
 		customer.setEntriesLeft(customer.getEntriesLeft()-1);
-		customerStorageService.update(customer);
+		customerService.save(customer);
 	}
 	
 	@RequestMapping("/{id}/entries/increment")
 	@ResponseBody
 	public void incrementEntryCount(@PathVariable String id){
-		Customer customer = customerStorageService.get(id);
+		Customer customer = customerService.getCustomerById(id);
 		customer.setEntriesLeft(customer.getEntriesLeft()+1);
-		customerStorageService.update(customer);
+		customerService.save(customer);
 	}
 	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	@ResponseBody
 	public void addCustomer(Customer customer){
 		String key = UUID.randomUUID().toString();
-		customerStorageService.put(key, customer);
+		customer.setId(key);
+		customerService.save(customer);
 	}
 	
 }
