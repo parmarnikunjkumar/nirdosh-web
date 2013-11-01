@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Controller;
@@ -24,21 +23,10 @@ import com.nirdosh.service.PriceService;
 
 @Controller
 public class CustomerController {
-
-//	@Inject
-//	MongoTemplate mongoOperaions;
 	
 	@Inject CustomerService customerService;
 	
 	@Inject PriceService priceService;
-
-	// @Autowired
-	// @Qualifier("customer")
-	// StorageService<String, Customer> customerStorageService;
-	//
-	// @Autowired
-	// @Qualifier("customerCard")
-	// StorageService<String, CustomerCard> customerCardStorageService;
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(CustomerController.class);
