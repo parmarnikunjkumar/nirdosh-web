@@ -5,11 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.nirdosh.dao.TrainningCourseDAO;
 import com.nirdosh.data.model.TrainningCourse;
-@Service
+@Repository
 public class TrainningCourseDAOImpl implements TrainningCourseDAO{
 	
 	@Inject MongoTemplate mongoOperations;

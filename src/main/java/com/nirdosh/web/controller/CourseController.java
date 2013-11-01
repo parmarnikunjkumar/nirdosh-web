@@ -17,14 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.nirdosh.dao.TrainningCourseDAO;
 import com.nirdosh.data.model.TrainningCourse;
+import com.nirdosh.service.TrainningCourseService;
 
 @Controller
 public class CourseController {
 	
-	@Inject
-	private TrainningCourseDAO courseDAO;
+//	@Inject
+//	private TrainningCourseDAO courseDAO;
+	
+	@Inject private TrainningCourseService trainningCourseService;
 	
 	@InitBinder
 	private void initBinder(WebDataBinder webDataBinder){
@@ -35,7 +37,7 @@ public class CourseController {
 	
 	@RequestMapping(value = "/courses", method = RequestMethod.GET)
 	public String welcome(HttpServletRequest request, Model model){
-		List<TrainningCourse> courses = courseDAO.getAll();
+		List<TrainningCourse> courses = trainningCourseService.getAll();
 		model.addAttribute("coursesList", courses);
 		model.addAttribute("course", new TrainningCourse());
 		return "courses";
@@ -45,13 +47,13 @@ public class CourseController {
 	public ModelAndView addCourse(TrainningCourse course,BindingResult result, Model model){
 		System.out.println("we are here");
 		System.out.println(course.getOnDate());
-		courseDAO.addCourse(course);
+		trainningCourseService.addCourse(course);
 		return new ModelAndView("redirect:courses");
 	}
 	
 	@RequestMapping(value = "/editCourse")
 	public String editCourse(String id, Model model){
-		TrainningCourse course = courseDAO.get(id);
+		TrainningCourse course = trainningCourseService.getCourse(id);
 		model.addAttribute("course", course);
 		return "editCourse";
 		
@@ -59,13 +61,13 @@ public class CourseController {
 	
 	@RequestMapping(value = "/updateCourse")
 	public ModelAndView updateCourse(TrainningCourse course, Model model){
-		courseDAO.save(course);
+		trainningCourseService.save(course);
 		return new ModelAndView("redirect:courses");
 	}
 
 	@RequestMapping(value = "/deleteCourse")
 	public ModelAndView deleteCourse(String id){
-		courseDAO.delete(id);
+		trainningCourseService.deleteCourse(id);
 		return new ModelAndView("redirect:courses");
 		
 	}
