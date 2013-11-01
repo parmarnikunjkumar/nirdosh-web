@@ -50,7 +50,9 @@
 
 					<td>${course.onDate}</td>
 
-					<td>${course.customers.size}</td>
+					<td>${course.customers.size}
+						<input type="button" value="edit" onclick="location.href='addCustomers?courseId=${course.id}'">
+					</td>
 				
 					<td><input type="button" value="edit" onclick="location.href='editCourse?id=${course.id}'"></td>
 					<td><input type="button" value="delete" onclick="location.href='deleteCourse?id=${course.id}'"></td>

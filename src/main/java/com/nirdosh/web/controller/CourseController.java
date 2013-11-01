@@ -69,4 +69,9 @@ public class CourseController {
 		return new ModelAndView("redirect:courses");
 		
 	}
+	
+	@RequestMapping(value = "/addCustomers")
+	public String addCustomerToCourse(String courseId,Model model){
+		return "";
+	}
 }
