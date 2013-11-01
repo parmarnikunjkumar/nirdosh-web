@@ -19,12 +19,18 @@ import org.springframework.web.servlet.ModelAndView;
 import com.nirdosh.data.model.Customer;
 import com.nirdosh.data.model.Price;
 import com.nirdosh.enums.CardType;
+import com.nirdosh.service.CustomerService;
+import com.nirdosh.service.PriceService;
 
 @Controller
 public class CustomerController {
 
-	@Inject
-	MongoTemplate mongoOperaions;
+//	@Inject
+//	MongoTemplate mongoOperaions;
+	
+	@Inject CustomerService customerService;
+	
+	@Inject PriceService priceService;
 
 	// @Autowired
 	// @Qualifier("customer")
@@ -51,8 +57,7 @@ public class CustomerController {
 	public String getCustomer(HttpServletRequest request, Model model) {
 
 		model.addAttribute("customer", new Customer());
-		model.addAttribute("customerList",
-				mongoOperaions.findAll(Customer.class));
+		model.addAttribute("customerList",customerService.getAll());
 
 		return "customer";
 	}
@@ -67,11 +72,12 @@ public class CustomerController {
 		} else {
 			Query query = new Query(Criteria.where("cardType").is(
 					customer.getCardType()));
-			Price price = mongoOperaions.findOne(query, Price.class);
+			Price price = priceService.getPrice(customer.getCardType());
 			setPrice(customer, price);
 			
-			customer.setEntriesLeft(customer.getCardType().getNumber());			
-			mongoOperaions.save(customer);
+			customer.setEntriesLeft(customer.getCardType().getNumber());
+			
+			customerService.save(customer);
 			return "showCustomer";
 		}
 
@@ -79,14 +85,15 @@ public class CustomerController {
 
 	@RequestMapping("/deleteCustomer")
 	public ModelAndView deleteCustomer(String id) {
-		mongoOperaions.remove(mongoOperaions.findById(id, Customer.class));
-		;
+		customerService.delete(id);
 		return new ModelAndView("redirect:customer");
 	}
 
 	@RequestMapping("/editCustomer")
 	public String editCustomer(String id, Model model) {
-		Customer customer = mongoOperaions.findById(id, Customer.class);
+		
+		Customer customer = customerService.getCustomerById(id);
+		
 		model.addAttribute("customer", customer);
 		model.addAttribute("cardTypes", CardType.values());
 		return "editCustomer";
@@ -95,30 +102,35 @@ public class CustomerController {
 	@RequestMapping("/updateCustomer")
 	public ModelAndView updateCustomer(Customer customer, Model model) {
 		
-		Query query = new Query(Criteria.where("cardType").is(
-				customer.getCardType()));
-		Price price = mongoOperaions.findOne(query, Price.class);
+		Price price = priceService.getPrice(customer.getCardType());
+				
 		setPrice(customer, price);
-		mongoOperaions.save(customer);
+		
+		customerService.save(customer);
+
 		return new ModelAndView("redirect:customer");
 	}
 
 	@RequestMapping("/incrementCount")
 	public ModelAndView incrementCount(String id) {
-		Customer customer = mongoOperaions.findById(id, Customer.class);
+		Customer customer = customerService.getCustomerById(id);
+				
 		customer.setEntriesLeft(customer.getEntriesLeft() + 1);
 		incrementCurrentBalance(customer);
-		mongoOperaions.save(customer);
+		customerService.save(customer);
+		
 		return new ModelAndView("redirect:customer");
 	}
 
 	@RequestMapping("/decrementCount")
 	public ModelAndView decrementCount(String id) {
 		System.out.println("ID:" + id);
-		Customer customer = mongoOperaions.findById(id, Customer.class);
+		Customer customer = customerService.getCustomerById(id);
+				
 		customer.setEntriesLeft(customer.getEntriesLeft() - 1);
 		decrementCurrentBalance(customer);
-		mongoOperaions.save(customer);
+		customerService.save(customer);
+		
 		return new ModelAndView("redirect:customer");
 	}
 	
@@ -156,8 +168,9 @@ public class CustomerController {
 	}
 	
 	private Price getPrice(CardType cardType){
-		Query query = new Query(Criteria.where("cardType").is(cardType));
-		return mongoOperaions.findOne(query, Price.class);
+		
+		return priceService.getPrice(cardType);
+				
 	}
 
 }
