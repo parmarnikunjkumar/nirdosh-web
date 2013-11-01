@@ -5,12 +5,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.nirdosh.dao.CustomerDAO;
 import com.nirdosh.data.model.Customer;
 
-@Service
+@Repository
 public class CustomerDAOImpl implements CustomerDAO{
 
 	@Inject MongoOperations mongoOperations;

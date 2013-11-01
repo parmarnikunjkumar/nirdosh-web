@@ -5,13 +5,13 @@ import javax.inject.Inject;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.nirdosh.dao.PriceDAO;
 import com.nirdosh.data.model.Price;
 import com.nirdosh.enums.CardType;
 
-@Service
+@Repository
 public class PriceDAOImpl implements PriceDAO {
 	
 	@Inject MongoOperations mongoOperations;

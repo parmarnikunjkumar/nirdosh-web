@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import com.nirdosh.dao.CustomerDAO;
 import com.nirdosh.data.model.Customer;
 import com.nirdosh.service.CustomerService;
 
+@Service
 public class CustomerServiceImpl implements CustomerService{
 
 	@Inject CustomerDAO customerDAO;
