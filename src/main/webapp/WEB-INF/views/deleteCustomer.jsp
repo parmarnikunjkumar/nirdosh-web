@@ -1,8 +1,4 @@
-<html>
-<head>
-</head>
-<body>
+<%@ include file="headerFrame.jsp"%>
 Deleted.
 <button onclick="location.href='customer'">OK</button>
-</body>
-</html>
+<%@ include file="footerFrame.jsp"%>

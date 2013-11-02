@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,8 +21,9 @@ public class TrainningCourse implements Serializable{
 	
 	private double duration;
 	
-	@DBRef
 	private List<Customer> customers;
+	
+	private List<String> customersId;
 
 	public String getId() {
 		return id;
@@ -64,6 +64,13 @@ public class TrainningCourse implements Serializable{
 	public void setCustomers(List<Customer> customers) {
 		this.customers = customers;
 	}
-	
+
+	public List<String> getCustomersId() {
+		return customersId;
+	}
+
+	public void setCustomersId(List<String> customersId) {
+		this.customersId = customersId;
+	}
 	
 }

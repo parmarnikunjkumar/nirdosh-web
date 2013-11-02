@@ -1,7 +1,4 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ include file="headerFrame.jsp"%>
 <div align="left">
 	<h3>Course Management</h3>
 	<form:form method="post" action="addCourse" commandName="course">
@@ -50,8 +47,7 @@
 
 					<td>${course.onDate}</td>
 
-					<td>${course.customers.size}
-						<input type="button" value="edit" onclick="location.href='addCustomers?courseId=${course.id}'">
+					<td>${fn:length(course.customersId)}
 					</td>
 				
 					<td><input type="button" value="edit" onclick="location.href='editCourse?id=${course.id}'"></td>
@@ -65,7 +61,8 @@
 				</c:forEach>
 			</table>
 			
-			<input type="button" value="home" onclick="location.href='home'">
+			<input type="button" value="home" onclick="location.href='${pageContext.request.contextPath}/home'">
 		</td>
 	</tr>
 </table>
+<%@ include file="footerFrame.jsp"%>
