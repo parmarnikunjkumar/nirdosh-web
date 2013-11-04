@@ -87,3 +87,4 @@
 	
 	
 		</div>
+		<%@ include file="footerFrame.jsp"%>

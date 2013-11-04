@@ -1,5 +1,5 @@
 <%@ include file="headerFrame.jsp"%>
-<div align="left">
+<div align="center">
 	<h3>Course Management</h3>
 	<form:form method="post" action="addCourse" commandName="course">
 		<table>
@@ -25,7 +25,7 @@
 			</tr>
 		</table>
 	</form:form>	
-</div>
+
 
 <table>
 	<tr>
@@ -64,5 +64,6 @@
 			<input type="button" value="home" onclick="location.href='${pageContext.request.contextPath}/home'">
 		</td>
 	</tr>
-</table>
+	</table>
+</div>
 <%@ include file="footerFrame.jsp"%>

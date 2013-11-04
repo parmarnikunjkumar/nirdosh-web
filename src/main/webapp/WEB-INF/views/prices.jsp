@@ -1,4 +1,5 @@
 <%@ include file="headerFrame.jsp"%>
+<div align="center">
 		<form:form action="addPrice" method="post" commandName="price">
 			<table>
 				<tr>
@@ -41,5 +42,6 @@
 		</table>
 		
 		<input type="button" value="home" onclick="location.href='home'">
+</div>
 		
 <%@ include file="footerFrame.jsp"%>

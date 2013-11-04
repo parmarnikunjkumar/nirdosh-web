@@ -3,11 +3,13 @@
 		<h2>Course Edit</h2>
 		<form:form method="post" action="updateCourse" commandName="course" modelAttribute="course">
 			<table>
+				<!-- 
 				<tr>
 					<td><form:label path="id"><spring:message code="label.id"/> </form:label></td>
-					<td><form:input path="id"/></td>
+					<td><form:input  path="id"/></td>
 					<td><form:errors path="id"/></td>				
 				</tr>
+				-->
 				<tr>
 					<td><form:label path="name">NAME</form:label></td>
 					<td><form:input path="name"/></td>

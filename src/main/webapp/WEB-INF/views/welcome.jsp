@@ -1,13 +1,15 @@
 <%@ include file="headerFrame.jsp"%>
-<table>
-	<tr>
-		<td><input type="button" value="CUSTOMER" onclick="location.href='customer'"></td>
-	</tr>
-	<tr>
-		<td><input type="button" value="PRICE" onclick="location.href='price'"></td>
-	</tr>
-	<tr>
-		<td><input type="button" value="COURSES" onclick="location.href='course/courses'"></td>
-	</tr>
-</table>
+
+	<h1>
+		Welcome to Smart Body Method
+	</h1>
+	
+	<h2>
+		This is my Page
+	</h2>
+	<h3>This is s sub page</h3>
+	<p>
+		This is my paragraph.
+	</p>
+
 <%@ include file="footerFrame.jsp"%>

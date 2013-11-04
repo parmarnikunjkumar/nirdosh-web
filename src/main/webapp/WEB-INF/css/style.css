@@ -2,12 +2,11 @@
 {
 	margin: 0 auto;
 	width: 100%;
-	background: #fff;
 }
 
 #header
 {
-	background: #ccc;
+	background: #D65CAD;
 	padding: 40px;
 }
 
@@ -18,11 +17,23 @@
 
 #navigation
 {
-	float: left;
+	float : left;
 	width: 100%;
-	background: #333;
+	background: #6B2E56;
+	margin-top: 10px;
+	margin-bottom: 50px;
 }
 
+#footer
+{
+	float: left;
+	bottom: 0;		
+	width: 100%;
+	clear: left;
+	text-align:center;
+	margin-top: 10px;
+	
+}
 #navigation ul
 {	margin: 0;
 	padding: 0;	
@@ -60,16 +71,7 @@
 	margin: 0 0 0 4%;
 }
 
-#footer
-{
-	position:fixed;
-	bottom: 0;		
-	width: 100%;
-	clear: left;
-	background: #ccc;
-	text-align: right;
-	padding: 20px;
-}
+
 
 .resizable
 {

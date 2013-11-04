@@ -17,6 +17,9 @@
 			<div id="navigation">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/customer">Customers</a></li>
+					<li><a href="${pageContext.request.contextPath}/price">Price</a></li>
+					<li><a href="${pageContext.request.contextPath}/course/courses">Courses</a></li>
 				</ul>
 			</div>
 			<div id="content-containder">

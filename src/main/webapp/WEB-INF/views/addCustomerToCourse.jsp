@@ -1,5 +1,6 @@
 <%@ include file="headerFrame.jsp"%>
 
+<div align="center">
 	<form:form action="done"  commandName="course" method="post">
 		<form:hidden path="id"/>
 	<table frame="box" border="1">
@@ -21,4 +22,5 @@
 		<input type="submit" value="Add">
 		<input type="button" value="cancel" onclick="location.href='cancel'"/>
 	</form:form>
+</div>
 <%@ include file="footerFrame.jsp"%>
