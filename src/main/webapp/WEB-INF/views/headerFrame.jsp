@@ -7,20 +7,23 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/smoothness/jquery-ui-1.10.3.custom.css">
+	<script type="text/javascript" src="scripts/jquery/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="scripts/jquery/jquery-ui-1.10.3.custom.js"></script>
+	<script type="text/javascript" src="scripts/simplemodal/jquery.simplemodal-1.4.4.js"></script>
 </head>
-
 <body>
 		<div id="container">
 			<div id="header">
-				<h1>SMART BODY METHOD</h1>
+<!-- 				<h1>SMART BODY METHOD</h1> -->
 			</div>
 			<div id="navigation">
-				<ul>
-					<li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-					<li><a href="${pageContext.request.contextPath}/customer">Customers</a></li>
-					<li><a href="${pageContext.request.contextPath}/price">Price</a></li>
-					<li><a href="${pageContext.request.contextPath}/course/courses">Courses</a></li>
-				</ul>
+<!-- 				<ul> -->
+<%-- 					<li><a href="${pageContext.request.contextPath}/home">Home</a></li> --%>
+<%-- 					<li><a href="${pageContext.request.contextPath}/customer">Customers</a></li> --%>
+<%-- 					<li><a href="${pageContext.request.contextPath}/price">Price</a></li> --%>
+<%-- 					<li><a href="${pageContext.request.contextPath}/course/courses">Courses</a></li> --%>
+<!-- 				</ul> -->
 			</div>
 			<div id="content-containder">
 				<div id="content">

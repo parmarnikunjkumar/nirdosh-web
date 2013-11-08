@@ -69,8 +69,10 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	
 	@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {		
-			registry.addResourceHandler("/scripts/**").addResourceLocations("/WEB-INF/scripts/");
-			registry.addResourceHandler("/styles/**").addResourceLocations("/WEB-INF/css/");		
+			registry.addResourceHandler("/scripts/**").addResourceLocations("/WEB-INF/resources/scripts/");
+			registry.addResourceHandler("/jquery/**").addResourceLocations("/WEB-INF/resources/scripts/jquery/");
+			registry.addResourceHandler("/styles/**").addResourceLocations("/WEB-INF/resources/css/");	
+			registry.addResourceHandler("/bootstrap/**").addResourceLocations("/WEB-INF/resources/bootstrap/");	
 		}
 	
 	

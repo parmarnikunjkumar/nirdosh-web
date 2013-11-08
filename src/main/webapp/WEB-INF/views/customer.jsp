@@ -1,5 +1,17 @@
 <%@ include file="headerFrame.jsp"%>
 <body>
+	<script type="text/javascript">
+		$(function(){$("#customer_info_form").dialog({
+			autoOpen:false,
+			height:200,
+			width:350,
+			modal:true
+		});
+	
+		});
+	</script>
+	<div id="customer_info_form" title="Customer Info">
+	</div>
 	<div align="center">
 		<h2>Customer Manager</h2>
 		<form:form method="post" action="addCustomer" commandName="customer">
@@ -55,7 +67,7 @@
     			<th> + / -</th>
     			<th>VISITS</th>
   			</tr>
-			<c:forEach var="customer" items="${customerList}">
+			<c:forEach var="customer" items="${customerList}" varStatus="loop">
 				<c:choose>
 					<c:when test="${customer.paymentInfo.currentBalance <= 0}">
 						<tr bgcolor="#FF0000">
@@ -67,7 +79,7 @@
 					<!--  
 					<td>${contact.id}</td>
 					-->
-					<td>${customer.firstName}</td>
+					<td id='customer${loop.count}FirstName'>${customer.firstName}</td>
 					  
 					<td>${customer.lastName}</td>
 					<!--
@@ -78,13 +90,22 @@
 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'">
 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'">
 					</td>
-					<td>${customer.entriesLeft}</td>
+					<script type="text/javascript">
+						$(document).ready(function(){
+						$("#customer${loop.count}FirstName").click(function(){
+							var str = "<table border='1' frame='box'>"+
+							"<tr><th>First Name</th><th>Last Name</th><th>Current Balance</th><th>To Pay</th></tr>"+
+							"<tr><td>${customer.firstName}</td><td>${customer.lastName}</td><td>${customer.paymentInfo.currentBalance}</td><td>${customer.paymentInfo.amountToPay}</td></tr></table>";
+							$("#customer_info_form").html(str).dialog("open");
+						})});
+					</script>
 				</tr>
 			</c:forEach>
 		</table>
 		
-		<input type="button" value="home" onclick="location.href='home'">
-	
-	
+		<input type="button" value="home" onclick="location.href='home'">	
 		</div>
+		
+		
+		
 		<%@ include file="footerFrame.jsp"%>

@@ -44,12 +44,30 @@ public class RestCustomerController {
 		customerService.save(customer);
 	}
 	
+	@RequestMapping("/{id}/decrementEntry")
+	@ResponseBody
+	public Customer decrementEntry(@PathVariable String id){
+		Customer customer = customerService.getCustomerById(id);
+		customer.setEntriesLeft(customer.getEntriesLeft()-1);
+		customerService.save(customer);
+		return customer;
+	}
+	
 	@RequestMapping("/{id}/entries/increment")
 	@ResponseBody
 	public void incrementEntryCount(@PathVariable String id){
 		Customer customer = customerService.getCustomerById(id);
 		customer.setEntriesLeft(customer.getEntriesLeft()+1);
 		customerService.save(customer);
+	}
+	
+	@RequestMapping("/{id}/incrementEntry")
+	@ResponseBody
+	public Customer incrementEntry(@PathVariable String id){
+		Customer customer = customerService.getCustomerById(id);
+		customer.setEntriesLeft(customer.getEntriesLeft()+1);
+		customerService.save(customer);
+		return customer;		
 	}
 	
 	@RequestMapping(value="/add", method = RequestMethod.POST)

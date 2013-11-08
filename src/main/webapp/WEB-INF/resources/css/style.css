@@ -4,25 +4,25 @@
 	width: 100%;
 }
 
-#header
-{
-	background: #D65CAD;
-	padding: 40px;
-}
+/* #header */
+/* { */
+/* 	background: #D65CAD; */
+/* 	padding: 40px; */
+/* } */
 
-#header h1 { 
-	margin: 0;
-	text-align: center;
-	}
+/* #header h1 {  */
+/* 	margin: 0; */
+/* 	text-align: center; */
+/* 	} */
 
-#navigation
-{
-	float : left;
-	width: 100%;
-	background: #6B2E56;
-	margin-top: 10px;
-	margin-bottom: 50px;
-}
+/* #navigation */
+/* { */
+/* 	float : left; */
+/* 	width: 100%; */
+/* 	background: #6B2E56; */
+/* 	margin-top: 10px; */
+/* 	margin-bottom: 50px; */
+/* } */
 
 #footer
 {
@@ -104,6 +104,11 @@
 	width: 200px;
 	height: 20px;
 	margin: 10px;
+}
+
+.navbar-sbm{
+	color: maroon;
+	background-color:menu;
 }
 
 
