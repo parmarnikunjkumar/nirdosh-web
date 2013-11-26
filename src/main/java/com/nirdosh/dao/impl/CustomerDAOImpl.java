@@ -20,8 +20,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	public void put(Customer customer) {
-		mongoOperations.save(customer);
-		
+		mongoOperations.save(customer);		
 	}
 
 	public List<Customer> getAll() {
