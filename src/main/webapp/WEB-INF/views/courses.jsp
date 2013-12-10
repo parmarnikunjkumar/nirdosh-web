@@ -1,5 +1,6 @@
-<%@ include file="headerFrame.jsp"%>
-<div align="center">
+<%@ include file="header.jsp"%>
+<%@ include file="navigation-bar.jsp"%>
+<div class="container">
 	<h3>Course Management</h3>
 	<form:form method="post" action="addCourse" commandName="course">
 		<table>
@@ -27,43 +28,43 @@
 	</form:form>	
 
 
-<table>
-	<tr>
-		<td>
-			<h3>Courses available</h3>
-
-			<table frame="box" border="1">
-				<tr>
-					<th>NAME</th>
-					<th>DATE</th>
-					<th>Members</th>
-					<th>EDIT</th>
-					<th>+ / -</th>
-				</tr>
-				
-				<c:forEach var="course" items="${coursesList}">
-					<tr>
-					<td>${course.name}</td>
-
-					<td>${course.onDate}</td>
-
-					<td>${fn:length(course.customersId)}
-					</td>
-				
-					<td><input type="button" value="edit" onclick="location.href='editCourse?id=${course.id}'"></td>
-					<td><input type="button" value="delete" onclick="location.href='deleteCourse?id=${course.id}'"></td>
+		<table>
+			<tr>
+				<td>
+					<h3>Courses available</h3>
+		
+					<table frame="box" border="1">
+						<tr>
+							<th>NAME</th>
+							<th>DATE</th>
+							<th>Members</th>
+							<th>EDIT</th>
+							<th>+ / -</th>
+						</tr>
+						
+						<c:forEach var="course" items="${coursesList}">
+							<tr>
+							<td>${course.name}</td>
+		
+							<td>${course.onDate}</td>
+		
+							<td>${fn:length(course.customersId)}
+							</td>
+						
+							<td><input type="button" value="edit" onclick="location.href='editCourse?id=${course.id}'"></td>
+							<td><input type="button" value="delete" onclick="location.href='deleteCourse?id=${course.id}'"></td>
+							
+							<%-- 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'"> --%>
+							<%-- 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'"> --%>
+							<!-- 					</td> -->
+							<%-- 					<td>${customer.entriesLeft}</td> --%>
+							</tr>
+						</c:forEach>
+					</table>
 					
-					<%-- 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'"> --%>
-					<%-- 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'"> --%>
-					<!-- 					</td> -->
-					<%-- 					<td>${customer.entriesLeft}</td> --%>
-					</tr>
-				</c:forEach>
+					<input type="button" value="home" onclick="location.href='${pageContext.request.contextPath}/home'">
+				</td>
+			</tr>
 			</table>
-			
-			<input type="button" value="home" onclick="location.href='${pageContext.request.contextPath}/home'">
-		</td>
-	</tr>
-	</table>
 </div>
-<%@ include file="footerFrame.jsp"%>
+<%@ include file="footer.jsp"%>

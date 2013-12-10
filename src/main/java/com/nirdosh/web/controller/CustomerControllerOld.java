@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.Log4jConfigListener;
 
 import com.nirdosh.data.model.Customer;
 import com.nirdosh.data.model.Price;
@@ -22,20 +23,25 @@ import com.nirdosh.service.CustomerService;
 import com.nirdosh.service.PriceService;
 
 @Controller
-public class CustomerController {
+public class CustomerControllerOld {
 	
 	@Inject CustomerService customerService;
 	
 	@Inject PriceService priceService;
 
 	private static final Logger LOGGER = LoggerFactory
-			.getLogger(CustomerController.class);
+			.getLogger(CustomerControllerOld.class);
 
 	@RequestMapping(value = "/")
 	public String index() {
 		return "welcome";
 	}
 	
+	@RequestMapping(value = "/test")
+	public String test(HttpServletRequest request) {
+		LOGGER.debug("Http Request :{}",request);
+		return "welcome";
+	}
 	@RequestMapping(value = "/index")
 	public String welcome() {
 		return "index";

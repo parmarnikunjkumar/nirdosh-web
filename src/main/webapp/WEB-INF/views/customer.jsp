@@ -1,5 +1,39 @@
-<%@ include file="headerFrame.jsp"%>
-<body>
+<%@ include file="header.jsp"%>
+<%@ include file="navigation-bar.jsp"%>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<form action="test" role="form" class="form-horizontal">
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" class="form-control" id="firstName" placeholder="Enter First Name" name="firstName">
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" name="lastName">
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
+				</div>
+				<div class="form-group">
+					<label for="mobile">Mobile</label>
+					<input type="tel" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile">
+				</div>
+				<div class="form-group">
+					<label for="homeTel">Home Tel</label>
+					<input type="tel" class="form-control" id="homeTel" placeholder="Enter Tel" name="homeTel">
+				</div>
+				<div class="form-group">
+					<label for="cardType">Card Type</label>
+					<input type="text" class="form-control" id="cardType" placeholder="Enter CardType" name="cardType">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
+
 	<script type="text/javascript">
 		$(function(){$("#customer_info_form").dialog({
 			autoOpen:false,
@@ -106,6 +140,4 @@
 		<input type="button" value="home" onclick="location.href='home'">	
 		</div>
 		
-		
-		
-		<%@ include file="footerFrame.jsp"%>
+<%@ include file="footer.jsp"%>
