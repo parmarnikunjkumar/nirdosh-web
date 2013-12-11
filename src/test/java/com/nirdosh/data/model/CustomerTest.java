@@ -60,7 +60,7 @@ public class CustomerTest {
 		
 		Customer customer = mongoOperations.findOne(query,Customer.class);
 		assertEquals("im Tal", customer.getAddresses().get(0).getStreetName());
-		assertEquals("150", customer.getPaymentInfo().getCurrentBalance());
+		assertEquals(12, customer.getPaymentInfo().getCurrentBalance(),0.0);
 		
 	}
 

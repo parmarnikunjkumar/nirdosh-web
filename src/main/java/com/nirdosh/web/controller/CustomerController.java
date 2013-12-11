@@ -23,14 +23,14 @@ import com.nirdosh.service.CustomerService;
 import com.nirdosh.service.PriceService;
 
 @Controller
-public class CustomerControllerOld {
+public class CustomerController {
 	
 	@Inject CustomerService customerService;
 	
 	@Inject PriceService priceService;
 
 	private static final Logger LOGGER = LoggerFactory
-			.getLogger(CustomerControllerOld.class);
+			.getLogger(CustomerController.class);
 
 	@RequestMapping(value = "/")
 	public String index() {
