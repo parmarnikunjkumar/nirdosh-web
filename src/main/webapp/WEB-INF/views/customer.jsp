@@ -1,52 +1,5 @@
-<%@ include file="header.jsp"%>
-<%@ include file="navigation-bar.jsp"%>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<form action="test" role="form" class="form-horizontal">
-				<div class="form-group">
-					<label for="firstName">First Name</label>
-					<input type="text" class="form-control" id="firstName" placeholder="Enter First Name" name="firstName">
-				</div>
-				<div class="form-group">
-					<label for="lastName">Last Name</label>
-					<input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" name="lastName">
-				</div>
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
-				</div>
-				<div class="form-group">
-					<label for="mobile">Mobile</label>
-					<input type="tel" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile">
-				</div>
-				<div class="form-group">
-					<label for="homeTel">Home Tel</label>
-					<input type="tel" class="form-control" id="homeTel" placeholder="Enter Tel" name="homeTel">
-				</div>
-				<div class="form-group">
-					<label for="cardType">Card Type</label>
-					<input type="text" class="form-control" id="cardType" placeholder="Enter CardType" name="cardType">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>
-		</div>
-	</div>
-</div>
-
-	<script type="text/javascript">
-		$(function(){$("#customer_info_form").dialog({
-			autoOpen:false,
-			height:200,
-			width:350,
-			modal:true
-		});
-	
-		});
-	</script>
-	<div id="customer_info_form" title="Customer Info">
-	</div>
-	<div align="center">
+<%@ include file="headerFrame.jsp"%>	
+<div align="center">
 		<h2>Customer Manager</h2>
 		<form:form method="post" action="addCustomer" commandName="customer">
 			<table>
@@ -88,7 +41,7 @@
 					<td><form:errors path="paymentInfo.currentBalance"/></td>
 				</tr>				
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.addcontact"/>"> </td>
+					<td colspan="2" align="center"><input type="submit" value="Add"> </td>
 				</tr>
 			</table>
 		</form:form>
@@ -135,9 +88,8 @@
 					</script>
 				</tr>
 			</c:forEach>
-		</table>
+</table>
 		
-		<input type="button" value="home" onclick="location.href='home'">	
-		</div>
+<input type="button" value="home" onclick="location.href='home'">	
 		
 <%@ include file="footer.jsp"%>

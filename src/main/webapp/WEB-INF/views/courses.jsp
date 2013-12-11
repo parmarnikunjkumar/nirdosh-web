@@ -1,6 +1,4 @@
-<%@ include file="header.jsp"%>
-<%@ include file="navigation-bar.jsp"%>
-<div class="container">
+<%@ include file="headerFrame.jsp"%>
 	<h3>Course Management</h3>
 	<form:form method="post" action="addCourse" commandName="course">
 		<table>
@@ -51,8 +49,8 @@
 							<td>${fn:length(course.customersId)}
 							</td>
 						
-							<td><input type="button" value="edit" onclick="location.href='editCourse?id=${course.id}'"></td>
-							<td><input type="button" value="delete" onclick="location.href='deleteCourse?id=${course.id}'"></td>
+							<td><input type="button" value="edit" onclick="location.href='course/editCourse?id=${course.id}'"></td>
+							<td><input type="button" value="delete" onclick="location.href='course/deleteCourse?id=${course.id}'"></td>
 							
 							<%-- 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'"> --%>
 							<%-- 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'"> --%>
@@ -66,5 +64,4 @@
 				</td>
 			</tr>
 			</table>
-</div>
-<%@ include file="footer.jsp"%>
+
