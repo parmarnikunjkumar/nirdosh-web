@@ -15,7 +15,6 @@
  
 <div id="tabs">
   <ul>
-  	<li><a href="#tabs-1">New</a></li>
     <li><a href="customer">Customer Management</a></li>
     <li><a href="course/courses">Courses</a></li>
     <li><a href="price">Price</a></li>
