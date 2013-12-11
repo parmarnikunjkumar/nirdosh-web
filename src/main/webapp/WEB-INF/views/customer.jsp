@@ -77,6 +77,7 @@
 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'">
 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'">
 					</td>
+					<td>${customer.entriesLeft}</td>
 					<script type="text/javascript">
 						$(document).ready(function(){
 						$("#customer${loop.count}FirstName").click(function(){
