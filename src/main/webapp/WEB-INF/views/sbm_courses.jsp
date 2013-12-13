@@ -9,7 +9,7 @@
 <div class="container">
 
 	<h3>Course Management</h3>
-		<form:form method="post" action="course/addCourse" commandName="course">
+		<form:form method="post" action="addCourse" commandName="course">
 		<table class="table table-bordered">
 			<tr>
 				<td><form:label path="name">Name</form:label></td>

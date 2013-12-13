@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/nirdosh-web"><h2>Smart Body Methode<h2></a>
+              <a class="navbar-brand" href="/nirdosh-web"><h2>Smart Body Method<h2></a>
             </div>
             
             <div class="navbar-collapse collapse pull-right pull-down">
