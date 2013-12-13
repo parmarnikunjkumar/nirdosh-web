@@ -1,44 +1,47 @@
 <%@ include file="sbm_header.jsp"%>	
 <%@ include file="sbm_navigation_bar.jsp"%>
-
 <script type="text/javascript">
 	$(function(){
-		$("#datepicker").datepicker();
-		$("#timepicker").timepicker();
+		$( "#datepicker" ).datetimepicker();
 	});
 </script>
+
 <div class="container">
 
 	<h3>Course Management</h3>
-	<form method="post" action="course/addCourse" commandName="course">
-		<table>
+		<form:form method="post" action="course/addCourse" commandName="course">
+		<table class="table table-bordered">
 			<tr>
-				<td><label path="name">Name</label></td>
-				<td><input path="name" name="name"/></td>
+				<td><form:label path="name">Name</form:label></td>
+				<td><form:input path="name"/></td>
+				<td><form:errors path="name"></form:errors></td>
 			</tr>
 			<tr>
-				<td><label path="onDate">Date</label></td>
+				<td><form:label path="onDate">Date</form:label></td>
 				<td>
-					<input path="onDate" type="text" id="datepicker" name="onDate"/>
+					<form:input path="onDate" type="text" id="datepicker"/>
 				</td>
+				<td><form:errors path="onDate"></form:errors></td>
 			</tr>
 			<tr>
-				<td><label path="duration">Duration</label></td>
-				<td><input path="duration" name="duration"/></td>
+				<td><form:label path="duration">Duration</form:label></td>
+				<td><form:input path="duration"/></td>
+				<td><form:errors path="duration"></form:errors></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="Add"/></td>
+				<td><input type="submit" value="Add" class="btn btn-success"/></td>
+				<td/>
+				<td/>
 			</tr>
 		</table>
-	</form>	
+	</form:form>
 
-
-		<table>
+		<table class="table table-bordered">
 			<tr>
 				<td>
 					<h3>Courses available</h3>
 		
-					<table frame="box" border="1">
+					<table class="table table-bordered">
 						<tr>
 							<th>NAME</th>
 							<th>DATE</th>
@@ -56,8 +59,8 @@
 							<td>${fn:length(course.customersId)}
 							</td>
 						
-							<td><input type="button" value="edit" onclick="location.href='course/editCourse?id=${course.id}'"></td>
-							<td><input type="button" value="delete" onclick="location.href='course/deleteCourse?id=${course.id}'"></td>
+							<td><input type="button" value="edit" onclick="location.href='editCourse?id=${course.id}'" class="btn btn-success"></td>
+							<td><input type="button" value="delete" onclick="location.href='deleteCourse?id=${course.id}'" class="btn btn-danger"></td>
 							
 							<%-- 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'"> --%>
 							<%-- 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'"> --%>
@@ -67,7 +70,7 @@
 						</c:forEach>
 					</table>
 					
-					<input type="button" value="home" onclick="location.href='${pageContext.request.contextPath}/home'">
+					<input type="button" value="home" onclick="location.href='${pageContext.request.contextPath}/home'" class="btn btn-primary">
 				</td>
 			</tr>
 			</table>

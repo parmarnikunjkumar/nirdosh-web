@@ -26,7 +26,7 @@ public class PriceController {
 		Price price = new Price();
 		model.addAttribute("price", price);
 		model.addAttribute("priceList", mongoOperaions.findAll(Price.class));		
-		return "prices";
+		return "sbm_prices";
 	}
 	
 	@RequestMapping(value="/addPrice", method=RequestMethod.POST)
@@ -50,7 +50,7 @@ public class PriceController {
 	@RequestMapping(value="/editPrice")
 	public String editPrice(String id, Model model){
 		model.addAttribute("price", mongoOperaions.findById(id, Price.class));
-		return "editPrice";
+		return "sbm_edit_price";
 	}
 	
 	@RequestMapping(value="/updatePrice")

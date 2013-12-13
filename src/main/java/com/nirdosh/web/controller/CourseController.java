@@ -26,7 +26,6 @@ import com.nirdosh.service.CustomerService;
 import com.nirdosh.service.TrainningCourseService;
 
 @Controller
-@RequestMapping("/course")
 public class CourseController {
 	
 	private final static Logger LOGGER = LoggerFactory.getLogger(CourseController.class);
@@ -40,12 +39,12 @@ public class CourseController {
 	
 	@InitBinder
 	private void initBinder(WebDataBinder webDataBinder){
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		webDataBinder.registerCustomEditor(Date.class,new CustomDateEditor(dateFormat, true));
 		
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/course", method = RequestMethod.GET)
 	public String welcome(HttpServletRequest request, Model model){
 		List<TrainningCourse> courses = trainningCourseService.getAll();
 		model.addAttribute("coursesList", courses);
@@ -57,14 +56,14 @@ public class CourseController {
 	public String addCourse(TrainningCourse course,BindingResult result, Model model){
 		LOGGER.debug("Date:{}",course.getOnDate());
 		trainningCourseService.addCourse(course);
-		return "sbm_courses";
+		return "redirect:/course";
 	}
 	
 	@RequestMapping(value = "/editCourse")
-	public String editCourse(String id, Model model){
+	public String editCourse(HttpServletRequest request, String id, Model model){
 		TrainningCourse course = trainningCourseService.getCourse(id);
 		model.addAttribute("course", course);
-		return "editCourse";
+		return "sbm_edit_course";
 		
 	}
 	
@@ -76,20 +75,20 @@ public class CourseController {
 	}
 
 	@RequestMapping(value = "/deleteCourse")
-	public String deleteCourse(HttpServletRequest request,String id){
+	public String deleteCourse(HttpServletRequest request, String id){
 		trainningCourseService.deleteCourse(id);
-		return "sbm_courses";
+		return "redirect:/course";
 		
 	}
 	
-	@RequestMapping(value = "/addCustomers")
+	@RequestMapping(value = "/addCustomersInCourse")
 	public String addCustomers(String courseId,Model model){
 		TrainningCourse course = trainningCourseService.getCourse(courseId);
 		List<Customer> customerList = customerService.getAll();
 		model.addAttribute("course", course);
 		model.addAttribute("customerList", customerList);
 		
-		return "addCustomerToCourse";
+		return "sbm_add_customer_to_course";
 	}
 	
 	@RequestMapping(value = "/done", method= RequestMethod.POST)
@@ -99,12 +98,12 @@ public class CourseController {
 		TrainningCourse courseToSave= trainningCourseService.getCourse(course.getId());
 		courseToSave.setCustomersId(course.getCustomersId());
 		trainningCourseService.save(courseToSave);
-		return new ModelAndView("redirect:courses");
+		return new ModelAndView("redirect:/course");
 	}
 	
-	@RequestMapping(value = "/cancel")
+	@RequestMapping(value = "/cancelCourse")
 	public ModelAndView cancel(String courseId,Model model){
-		return new ModelAndView("redirect:courses");
+		return new ModelAndView("redirect:/course");
 	}
 	
 	

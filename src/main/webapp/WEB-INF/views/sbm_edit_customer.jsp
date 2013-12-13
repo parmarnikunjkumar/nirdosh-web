@@ -1,9 +1,10 @@
-<%@ include file="headerFrame.jsp"%>
-	<div align="center">
+<%@ include file="sbm_header.jsp"%>	
+<%@ include file="sbm_navigation_bar.jsp"%>
+<div class="container">
 		<h2>Customer Manager</h2>
 		<form:form method="post" action="updateCustomer" commandName="customer">
 			<form:hidden path="id"/>
-			<table>
+			<table class="table">
 <!-- 				<tr> -->
 <%-- 					<td><form:label path="id"><spring:message code="label.id"/> </form:label></td> --%>
 <%-- 					<td><form:input path="id"/></td> --%>
@@ -65,12 +66,12 @@
 					<td><form:errors path="paymentInfo.currentBalance"/></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.update"/>"> </td>
+					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.update"/>" class="btn btn-primary"> </td>
 				</tr>
 				<tr>
-					<td> <input type="button" value="CANCEL" onclick="location.href='cancel'"></td>
+					<td> <input type="button" value="CANCEL" onclick="location.href='cancel'" class="btn btn-danger"></td>
 				</tr>
 			</table>
 		</form:form>
-		</div>
+</div>
 <%@ include file="footerFrame.jsp"%>

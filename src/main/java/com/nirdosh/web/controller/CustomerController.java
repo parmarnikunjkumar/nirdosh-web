@@ -67,7 +67,7 @@ public class CustomerController {
 			customer.setEntriesLeft(customer.getCardType().getNumber());
 			
 			customerService.save(customer);
-			return "sbm_show_customer";
+			return "redirect:/customer";
 		}
 
 	}
@@ -85,7 +85,7 @@ public class CustomerController {
 		
 		model.addAttribute("customer", customer);
 		model.addAttribute("cardTypes", CardType.values());
-		return "editCustomer";
+		return "sbm_edit_customer";
 	}
 
 	@RequestMapping("/updateCustomer")

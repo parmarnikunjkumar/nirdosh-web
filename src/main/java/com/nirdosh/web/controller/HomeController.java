@@ -8,12 +8,12 @@ public class HomeController {
 	
 	@RequestMapping(value = "/")
 	public String welcome() {
-		return "index_sbm";
+		return "redirect:/customer";
 	}
 	
 	@RequestMapping("home")
 	public String home(){
-		return "index_sbm";
+		return "redirect:/customer";
 	}
 	@RequestMapping("about")
 	public String about(){
