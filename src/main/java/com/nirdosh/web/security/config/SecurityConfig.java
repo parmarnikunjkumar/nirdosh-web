@@ -10,9 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-		auth.inMemoryAuthentication().withUser("sanatan").password("iamgunatit").roles("USER");
-	}
+//	@Autowired
+//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+//		auth.inMemoryAuthentication().withUser("sanatan").password("iamgunatit").roles("USER");
+//	}
 
 }

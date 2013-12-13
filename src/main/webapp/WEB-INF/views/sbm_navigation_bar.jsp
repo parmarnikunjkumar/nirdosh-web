@@ -17,6 +17,9 @@
                 <li class="active"><a href="/nirdosh-web">Home</a></li>
                 <li><a href="about">About</a></li>
                 <li><a href="contact">Contact</a></li>
+                 <li><a href="customer">Customer</a></li>
+                 <li><a href="course">Course</a></li>
+                 <li><a href="price">Price</a></li>
               </ul>
             </div>
           </div>

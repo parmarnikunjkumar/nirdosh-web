@@ -10,30 +10,27 @@
 <div class="container">
 
 	<h3>Course Management</h3>
-	<form:form method="post" action="course/addCourse" commandName="course">
+	<form method="post" action="course/addCourse" commandName="course">
 		<table>
 			<tr>
-				<td><form:label path="name">Name</form:label></td>
-				<td><form:input path="name"/></td>
-				<td><form:errors path="name"></form:errors></td>
+				<td><label path="name">Name</label></td>
+				<td><input path="name" name="name"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="onDate">Date</form:label></td>
+				<td><label path="onDate">Date</label></td>
 				<td>
-					<form:input path="onDate" type="text" />
+					<input path="onDate" type="text" id="datepicker" name="onDate"/>
 				</td>
-				<td><form:errors path="onDate"></form:errors></td>
 			</tr>
 			<tr>
-				<td><form:label path="duration">Duration</form:label></td>
-				<td><form:input path="duration"/></td>
-				<td><form:errors path="duration"></form:errors></td>
+				<td><label path="duration">Duration</label></td>
+				<td><input path="duration" name="duration"/></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Add"/></td>
 			</tr>
 		</table>
-	</form:form>	
+	</form>	
 
 
 		<table>
@@ -59,8 +56,8 @@
 							<td>${fn:length(course.customersId)}
 							</td>
 						
-							<td><input type="button" value="edit" onclick="location.href='editCourse?id=${course.id}'"></td>
-							<td><input type="button" value="delete" onclick="location.href='deleteCourse?id=${course.id}'"></td>
+							<td><input type="button" value="edit" onclick="location.href='course/editCourse?id=${course.id}'"></td>
+							<td><input type="button" value="delete" onclick="location.href='course/deleteCourse?id=${course.id}'"></td>
 							
 							<%-- 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'"> --%>
 							<%-- 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'"> --%>

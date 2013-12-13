@@ -1,7 +1,9 @@
-<%@ include file="headerFrame.jsp"%>	
+<%@ include file="sbm_header.jsp"%>	
+<%@ include file="sbm_navigation_bar.jsp"%>
+<div class="container">
 <div align="center">
 		<h2>Customer Manager</h2>
-		<form:form method="post" action="addCustomer" commandName="customer">
+		<form method="post" action="addCustomer">
 			<table>
 				<tr>
 					<td><form:label path="firstName"><spring:message code="label.firstname"/> </form:label></td>
@@ -91,6 +93,8 @@
 			</c:forEach>
 </table>
 		
-<input type="button" value="home" onclick="location.href='home'">	
+<input type="button" value="home" onclick="location.href='home'">
+
+</div>	
 		
 <%@ include file="footer.jsp"%>

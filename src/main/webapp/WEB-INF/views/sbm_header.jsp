@@ -7,8 +7,8 @@
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link rel="stylesheet" type="text/css"
 	href="styles/smoothness/jquery-ui-1.10.3.custom.css">
-<script type="text/javascript" src="scripts/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="scripts/jquery-ui-1.10.3.custom.js"></script>
+<script type="text/javascript" src="jquery/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="jquery/jquery-ui-1.10.3.custom.js"></script>
 <title>Smart Body Method</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
@@ -20,4 +20,4 @@
 <c:set var="base"
 	value="${fn:substring(url, 0, fn:length(url) - fn:length(req.requestURI))}/" />
 </head>
-</head>
+

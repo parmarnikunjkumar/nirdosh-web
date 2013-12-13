@@ -1,4 +1,5 @@
-<%@ include file="headerFrame.jsp"%>
+<%@ include file="sbm_header.jsp"%>	
+<%@ include file="sbm_navigation_bar.jsp"%>
 <div align="center">
 		<form:form action="addPrice" method="post" commandName="price">
 			<table>

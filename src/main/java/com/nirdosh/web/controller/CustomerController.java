@@ -31,11 +31,6 @@ public class CustomerController {
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(CustomerController.class);
-
-	@RequestMapping(value = "/")
-	public String index() {
-		return "welcome";
-	}
 	
 	@RequestMapping(value = "/test")
 	public String test(HttpServletRequest request) {
@@ -53,16 +48,16 @@ public class CustomerController {
 		model.addAttribute("customer", new Customer());
 		model.addAttribute("customerList",customerService.getAll());
 
-		return "customer";
+		return "sbm_customer";
 	}
 
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
 	public String addCustomer(@Valid Customer customer, BindingResult result,
 			Model model) {
-
+		LOGGER.debug("Has Error:{}",result.hasErrors());
 		if (result.hasErrors()) {
 			model.addAttribute("result", result);
-			return "customer";
+			return "sbm_customer";
 		} else {
 			Query query = new Query(Criteria.where("cardType").is(
 					customer.getCardType()));
@@ -72,7 +67,7 @@ public class CustomerController {
 			customer.setEntriesLeft(customer.getCardType().getNumber());
 			
 			customerService.save(customer);
-			return "showCustomer";
+			return "sbm_show_customer";
 		}
 
 	}

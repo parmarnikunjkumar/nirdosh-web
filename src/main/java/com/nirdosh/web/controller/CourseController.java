@@ -45,20 +45,19 @@ public class CourseController {
 		
 	}
 	
-	@RequestMapping(value = "/courses", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String welcome(HttpServletRequest request, Model model){
 		List<TrainningCourse> courses = trainningCourseService.getAll();
 		model.addAttribute("coursesList", courses);
 		model.addAttribute("course", new TrainningCourse());
-		return "courses";
+		return "sbm_courses";
 	}
 	
 	@RequestMapping(value = "/addCourse", method = RequestMethod.POST)
-	public ModelAndView addCourse(TrainningCourse course,BindingResult result, Model model){
-		System.out.println("we are here");
-		System.out.println(course.getOnDate());
+	public String addCourse(TrainningCourse course,BindingResult result, Model model){
+		LOGGER.debug("Date:{}",course.getOnDate());
 		trainningCourseService.addCourse(course);
-		return new ModelAndView("redirect:courses");
+		return "sbm_courses";
 	}
 	
 	@RequestMapping(value = "/editCourse")
@@ -77,9 +76,9 @@ public class CourseController {
 	}
 
 	@RequestMapping(value = "/deleteCourse")
-	public ModelAndView deleteCourse(String id){
+	public String deleteCourse(HttpServletRequest request,String id){
 		trainningCourseService.deleteCourse(id);
-		return new ModelAndView("redirect:courses");
+		return "sbm_courses";
 		
 	}
 	

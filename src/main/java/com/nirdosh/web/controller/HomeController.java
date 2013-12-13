@@ -6,9 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 	
+	@RequestMapping(value = "/")
+	public String welcome() {
+		return "index_sbm";
+	}
+	
 	@RequestMapping("home")
 	public String home(){
-		return "index";
+		return "index_sbm";
 	}
 	@RequestMapping("about")
 	public String about(){
@@ -19,5 +24,7 @@ public class HomeController {
 	public String contact(){
 		return "contact";
 	}
+	
+	
 
 }

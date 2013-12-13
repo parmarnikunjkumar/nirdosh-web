@@ -6,9 +6,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/smoothness/jquery-ui-1.10.3.custom.css">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="stylesheet" type="text/css" href="styles/smoothness/jquery-ui-1.10.3.custom.css">
+	<link rel="stylesheet" type="text/css" href="styles/timepicker/jquery.timepicker.css">
 	<script type="text/javascript" src="scripts/jquery/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="scripts/jquery/jquery.timepicker.js"></script>
 	<script type="text/javascript" src="scripts/jquery/jquery-ui-1.10.3.custom.js"></script>
 	<script type="text/javascript" src="scripts/simplemodal/jquery.simplemodal-1.4.4.js"></script>
 </head>
