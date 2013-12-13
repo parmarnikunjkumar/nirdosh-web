@@ -13,7 +13,7 @@ import com.mongodb.Mongo;
 
 @Configurable
 @PropertySource("classpath:app.properties")
-public class PropertyConfig {
+public class SbmPropertyConfig {
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {

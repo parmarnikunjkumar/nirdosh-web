@@ -7,10 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -21,12 +23,18 @@ import com.nirdosh.web.interceptor.RequestCountInterceptor;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages={"com.nirdosh"})
-public class AppConfig extends WebMvcConfigurerAdapter{
+public class SbmAppConfig extends WebMvcConfigurerAdapter{
 	
 //	@Override
 //	public void addFormatters(FormatterRegistry registry) {		
 //		registry.addConverter(new CustomerConverter());
 //	}
+	
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addViewController("/login").setViewName("login");
+		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+	}
 	
 	@Bean
 	public ViewResolver viewResolver(){
@@ -73,9 +81,5 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 			registry.addResourceHandler("/jquery/**").addResourceLocations("/WEB-INF/resources/scripts/jquery/");
 			registry.addResourceHandler("/styles/**").addResourceLocations("/WEB-INF/resources/css/");	
 			registry.addResourceHandler("/bootstrap/**").addResourceLocations("/WEB-INF/resources/bootstrap/");	
-		}
-	
-	
-
-	
+		}	
 }
