@@ -47,7 +47,8 @@
 							<th>DATE</th>
 							<th>Members</th>
 							<th>EDIT</th>
-							<th>+ / -</th>
+							<th>DELETE</th>
+							<th>REPEAT</th>
 						</tr>
 						
 						<c:forEach var="course" items="${coursesList}">
@@ -59,8 +60,10 @@
 							<td>${fn:length(course.customersId)}
 							</td>
 						
-							<td><input type="button" value="edit" onclick="location.href='editCourse?id=${course.id}'" class="btn btn-success"></td>
-							<td><input type="button" value="delete" onclick="location.href='deleteCourse?id=${course.id}'" class="btn btn-danger"></td>
+							<td><input type="button" value="Edit" onclick="location.href='editCourse?id=${course.id}'" class="btn btn-success"></td>
+							<td><input type="button" value="Delete" onclick="location.href='deleteCourse?id=${course.id}'" class="btn btn-danger"></td>
+							<td><input type="button" value="Repeat" onclick="location.href='repeatCourse?id=${course.id}'" class="btn btn-info"></td>
+							
 							
 							<%-- 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'"> --%>
 							<%-- 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'"> --%>

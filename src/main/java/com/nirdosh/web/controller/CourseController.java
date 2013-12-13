@@ -1,6 +1,7 @@
 package com.nirdosh.web.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -77,6 +78,26 @@ public class CourseController {
 	@RequestMapping(value = "/deleteCourse")
 	public String deleteCourse(HttpServletRequest request, String id){
 		trainningCourseService.deleteCourse(id);
+		return "redirect:/course";
+		
+	}
+	
+	@RequestMapping(value = "/repeatCourse")
+	public String repeatCourse(HttpServletRequest request, String id){
+		TrainningCourse trainingCourse = trainningCourseService.getCourse(id);
+		Date currentOnDate = trainingCourse.getOnDate();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(currentOnDate);
+		calendar.add(Calendar.WEEK_OF_MONTH, 1);
+		
+		TrainningCourse repeatCourse = new TrainningCourse();
+		repeatCourse.setCustomers(trainingCourse.getCustomers());
+		repeatCourse.setCustomersId(trainingCourse.getCustomersId());
+		repeatCourse.setDuration(trainingCourse.getDuration());
+		repeatCourse.setName(trainingCourse.getName());
+		repeatCourse.setOnDate(calendar.getTime());
+		
+		trainningCourseService.addCourse(repeatCourse);
 		return "redirect:/course";
 		
 	}
