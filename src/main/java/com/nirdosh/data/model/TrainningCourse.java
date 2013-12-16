@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,7 +22,7 @@ public class TrainningCourse implements Serializable{
 	
 	private String name;
 	
-	@DateTimeFormat
+	@DateTimeFormat(pattern="MM/dd/yyyy HH:mm")
 	private Date onDate;
 	
 	private double duration;
@@ -44,7 +45,8 @@ public class TrainningCourse implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
-	}
+	}	
+	
 
 	public Date getOnDate() {
 		return onDate;

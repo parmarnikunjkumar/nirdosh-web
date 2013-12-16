@@ -55,7 +55,7 @@
 							<tr>
 							<td>${course.name}</td>
 		
-							<td>${course.onDate}</td>
+							<td><fmt:formatDate value="${course.onDate}" pattern="dd-MM-yyyy HH:mm" /></td>
 		
 							<td>${fn:length(course.customersId)}
 							</td>
