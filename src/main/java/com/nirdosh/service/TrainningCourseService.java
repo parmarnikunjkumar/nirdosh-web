@@ -15,5 +15,7 @@ public interface TrainningCourseService {
 	void addCourse(TrainningCourse course);
 	
 	void save(TrainningCourse course);
+	
+	List<TrainningCourse> getCourses(List<String> ids);
 
 }

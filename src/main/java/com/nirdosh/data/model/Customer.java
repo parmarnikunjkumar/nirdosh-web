@@ -1,6 +1,7 @@
 package com.nirdosh.data.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -39,6 +40,8 @@ public class Customer implements Serializable {
 	private List<Address> addresses;
 	
 	private PaymentInfo paymentInfo;
+	
+	private List<String> courseList;
 	
 	public String getId() {
 		return id;
@@ -128,6 +131,17 @@ public class Customer implements Serializable {
 
 	public void setHome(String home) {
 		this.home = home;
+	}
+	
+	public List<String> getCourseList() {
+		if(courseList== null){
+			courseList = new ArrayList<String>();
+		}
+		return courseList;
+	}
+
+	public void setCourseList(List<String> courseList) {
+		this.courseList = courseList;
 	}
 
 	@Override

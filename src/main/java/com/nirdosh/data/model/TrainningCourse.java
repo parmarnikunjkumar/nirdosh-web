@@ -11,6 +11,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Document
 public class TrainningCourse implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String id;
 	

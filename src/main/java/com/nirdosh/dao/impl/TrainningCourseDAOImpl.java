@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.nirdosh.dao.TrainningCourseDAO;
@@ -36,6 +38,12 @@ public class TrainningCourseDAOImpl implements TrainningCourseDAO{
 	public void save(TrainningCourse course) {
 		mongoOperations.save(course);
 		
+	}
+	
+	public List<TrainningCourse> getAll(List<String> ids){		
+		Query query = new Query(Criteria.where("id").in(ids));
+		
+		return mongoOperations.find(query, TrainningCourse.class);
 	}
 
 }

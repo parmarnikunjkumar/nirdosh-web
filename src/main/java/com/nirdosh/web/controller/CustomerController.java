@@ -21,6 +21,7 @@ import com.nirdosh.data.model.Price;
 import com.nirdosh.enums.CardType;
 import com.nirdosh.service.CustomerService;
 import com.nirdosh.service.PriceService;
+import com.nirdosh.service.TrainningCourseService;
 
 @Controller
 public class CustomerController {
@@ -28,6 +29,8 @@ public class CustomerController {
 	@Inject CustomerService customerService;
 	
 	@Inject PriceService priceService;
+	
+	@Inject TrainningCourseService trainngCourseService;
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(CustomerController.class);
@@ -88,6 +91,14 @@ public class CustomerController {
 		return "sbm_edit_customer";
 	}
 
+	@RequestMapping("/customerDetails")
+	public String customerDetails(String id, Model model){
+		Customer customer = customerService.getCustomerById(id);
+		model.addAttribute("courseList",trainngCourseService.getCourses(customer.getCourseList()));
+		model.addAttribute("customer",customer);
+		
+		return "sbm_customer_details";
+	}
 	@RequestMapping("/updateCustomer")
 	public ModelAndView updateCustomer(Customer customer, Model model) {
 		

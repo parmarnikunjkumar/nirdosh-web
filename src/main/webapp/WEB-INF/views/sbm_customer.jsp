@@ -55,6 +55,7 @@
     			<th>EDIT</th>
     			<th> + / -</th>
     			<th>VISITS</th>
+    			<th>DETAILS</th>
   			</tr>
 			<c:forEach var="customer" items="${customerList}" varStatus="loop">
 				<c:choose>
@@ -80,6 +81,7 @@
 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'" class="btn btn-default btn-sm">
 					</td>
 					<td>${customer.entriesLeft}</td>
+					<td><input type="submit" class="btn btn-info" value="Details" onclick="location.href='customerDetails?id=${customer.id}'"/></td>
 					<script type="text/javascript">
 						$(document).ready(function(){
 						$("#customer${loop.count}FirstName").click(function(){

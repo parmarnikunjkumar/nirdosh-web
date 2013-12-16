@@ -16,5 +16,7 @@ public interface TrainningCourseDAO {
 	TrainningCourse get(String id);
 	
 	void save(TrainningCourse course);
+	
+	List<TrainningCourse> getAll(List<String> ids);
 
 }

@@ -38,4 +38,8 @@ public class TrainningCourseServiceImpl implements TrainningCourseService{
 		
 	}
 
+	public List<TrainningCourse> getCourses(List<String> ids) {
+		return trainningCourseDAO.getAll(ids);
+	}
+
 }
