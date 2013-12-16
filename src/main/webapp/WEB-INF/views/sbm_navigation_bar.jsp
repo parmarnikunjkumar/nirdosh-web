@@ -1,10 +1,9 @@
 <div class="navbar-wrapper">
       <div class="container">
-
-        <div class="navbar navbar-sbm navbar-static-top">
-          <div class="container">
+        <div class="navbar navbar-sbm" role="navigation">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              	<span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -12,7 +11,7 @@
               <a class="navbar-brand" href="/nirdosh-web"><h2>Smart Body Method<h2></a>
             </div>
             
-            <div class="navbar-collapse collapse pull-right pull-down">
+            <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="/nirdosh-web">Home</a></li>
                  <li><a href="customer">Customer</a></li>
@@ -22,5 +21,5 @@
             </div>
           </div>
         </div>
-	</div>
 </div>
+	
