@@ -17,7 +17,7 @@
 				<tbody>
 					<c:forEach varStatus="status" var="course" items="${courseList}">
 						<tr>
-							<td>${course.onDate}</td>
+							<td><fmt:formatDate value="${course.onDate}" pattern="dd-MM-yyyy HH:mm" /></td>
 							<td>${course.name}</td>
 						</tr>
 						<c:if test="${status.last}">
