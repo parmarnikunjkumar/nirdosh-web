@@ -38,4 +38,4 @@
 		</div>
 	</div>
 </div>
-<%@ include file="footerFrame.jsp"%>
+<%@ include file="sbm_footer.jsp"%>

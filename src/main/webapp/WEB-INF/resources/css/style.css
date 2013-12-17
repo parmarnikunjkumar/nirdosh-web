@@ -106,9 +106,13 @@
 	margin: 10px;
 }
 
-.navbar-sbm{
-	color: maroon;
-	background-color:menu;
+.navbar-sbm {
+  background-color:#DAF8FF;
+  border-color: #080808;
+}
+
+.navbar-sbm .navbar-toggle .icon-bar {
+  background-color: #FF0000;
 }
 
 

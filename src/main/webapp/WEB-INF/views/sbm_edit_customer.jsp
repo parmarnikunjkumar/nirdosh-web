@@ -35,43 +35,49 @@
 					<td><form:input path="home"/></td>
 					<td><form:errors path="home"/></td>
 				</tr>
-				<tr>
-					<td><form:label path="cardType"><spring:message code="label.cardtype"/> </form:label></td>
-					<td><form:select path="cardType">
-							<form:options/>
-						</form:select> </td>
-					<td><form:errors path="cardType"/></td>
-				</tr>	
+<!-- 				<tr> -->
+<%-- 					<td><form:label path="cardType"><spring:message code="label.cardtype"/> </form:label></td> --%>
+<%-- 					<td><form:select path="cardType"> --%>
+<%-- 							<form:options/> --%>
+<%-- 						</form:select> </td> --%>
+<%-- 					<td><form:errors path="cardType"/></td> --%>
+<!-- 				</tr>	 -->
 				<tr>
 					<td><form:label path="entriesLeft"><spring:message code="label.entriesleft"/> </form:label></td>
 					<td><form:input path="entriesLeft"/></td>
 					<td><form:errors path="entriesLeft"/></td>				
 				</tr>
 				<tr>					
-					<td><form:label path="paymentInfo.amountToPay"><spring:message code="label.amounttopay"/> </form:label></td>
-					<td><form:input path="paymentInfo.amountToPay"/></td>
-					<td><form:errors path="paymentInfo.amountToPay"/></td>			
+					<td><form:label path="balance"><spring:message code="label.balance"/> </form:label></td>
+					<td><form:input path="balance"/></td>
+					<td><form:errors path="balance"/></td>			
 				</tr>
-				<c:choose>
-					<c:when test="${customer.paymentInfo.currentBalance<=0}">
-						<tr bgcolor="#FF0000">
-					</c:when>
-					<c:otherwise>
-						<tr>
-					</c:otherwise>
-				</c:choose>
-				
-					<td><form:label path="paymentInfo.currentBalance"><spring:message code="label.currentbalance"/> </form:label></td>
-					<td><form:input path="paymentInfo.currentBalance"/></td>
-					<td><form:errors path="paymentInfo.currentBalance"/></td>
-				</tr>
+<!-- 				<tr>					 -->
+<%-- 					<td><form:label path="paymentInfo.amountToPay"><spring:message code="label.amounttopay"/> </form:label></td> --%>
+<%-- 					<td><form:input path="paymentInfo.amountToPay"/></td> --%>
+<%-- 					<td><form:errors path="paymentInfo.amountToPay"/></td>			 --%>
+<!-- 				</tr> -->
+<%-- 				<c:choose> --%>
+<%-- 					<c:when test="${customer.balance<=0}"> --%>
+<!-- 						<tr bgcolor="#FF0000"> -->
+<%-- 					</c:when> --%>
+<%-- 					<c:otherwise> --%>
+<!-- 						<tr> -->
+<%-- 					</c:otherwise> --%>
+<%-- 				</c:choose> --%>
+<!-- 				<tr> -->
+<%-- 					<td><form:label path="balance"><spring:message code="label.currentbalance"/> </form:label></td> --%>
+<%-- 					<td><form:input path="balance"/></td> --%>
+<%-- 					<td><form:errors path="balance"/></td> --%>
+<!-- 				</tr> -->
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.update"/>" class="btn btn-primary"> </td>
 				</tr>
 				<tr>
 					<td> <input type="button" value="CANCEL" onclick="location.href='cancel'" class="btn btn-danger"></td>
+					<td> <input type="button" value="Delete User" onclick="location.href='deleteCustomer?id=${customer.id}'" class="btn btn-danger pull-right"></td>
 				</tr>
 			</table>
 		</form:form>
 </div>
-<%@ include file="footerFrame.jsp"%>
+<%@ include file="sbm_footer.jsp"%>

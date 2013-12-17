@@ -121,8 +121,8 @@ public class CourseController {
 		return "sbm_add_customer_to_course";
 	}
 
-	@RequestMapping(value = "/done", method = RequestMethod.POST)
-	public ModelAndView addCustomerToCourse(
+	@RequestMapping(value = "/doneAddCustomers", method = RequestMethod.POST)
+	public ModelAndView doneAddCustomers(
 			@ModelAttribute("course") TrainningCourse course, Model model) {
 		LOGGER.debug("NAME:{}", course.getName());
 		LOGGER.debug("ID:{}", course.getId());
@@ -131,15 +131,25 @@ public class CourseController {
 		courseToSave.setCustomersId(course.getCustomersId());
 		trainningCourseService.save(courseToSave);
 
-		// update all customers with this course as well
+		// update all customers deduct thier balance with this course as well
 		for (String customerId : course.getCustomersId()) {
 			Customer customer = customerService.getCustomerById(customerId);
 			// no duplicates
-			if (!customer.getCourseList().contains(course.getId())) {
+			if (customer.getCourseList().contains(course.getId())) {
+				continue;
+			}
 				customer.getCourseList().add(course.getId());
+				if(customer.getCustomerCard().isCardValid()){
+					customer.getCustomerCard().deductOne();
+					// TODO: must be changed to something else
+					customer.setBalance(customer.getBalance()-customer.getCustomerCard().getCardType().getSinglePrice());
+					customer.setEntriesLeft(customer.getEntriesLeft()-1);
+				}else{
+					customer.setBalance(customer.getBalance()-course.getPrice());
+				}
+				
 				customerService.save(customer);
 			}
-		}
 		return new ModelAndView("redirect:/course");
 	}
 

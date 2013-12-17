@@ -30,6 +30,8 @@ public class TrainningCourse implements Serializable{
 	private List<Customer> customers;
 	
 	private List<String> customersId;
+	
+	private float price;
 
 	public String getId() {
 		return id;
@@ -79,5 +81,14 @@ public class TrainningCourse implements Serializable{
 	public void setCustomersId(List<String> customersId) {
 		this.customersId = customersId;
 	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	
 	
 }

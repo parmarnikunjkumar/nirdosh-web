@@ -29,18 +29,23 @@
 					<td><form:input path="home"/></td>
 					<td><form:errors path="home"/></td>
 				</tr>
+<!-- 				<tr> -->
+<%-- 					<td><form:label path="cardType"><spring:message code="label.cardtype"/> </form:label></td> --%>
+<%-- 					<td><form:select path="cardType"> --%>
+<%-- 						<form:options/> --%>
+<%-- 						</form:select> </td> --%>
+<%-- 					<td><form:errors path="cardType"/></td> --%>
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<%-- 					<td><form:label path="paymentInfo.currentBalance"><spring:message code="label.currentbalance"/> </form:label></td> --%>
+<%-- 					<td><form:input path="paymentInfo.currentBalance"/></td> --%>
+<%-- 					<td><form:errors path="paymentInfo.currentBalance"/></td> --%>
+<!-- 				</tr>	 -->
 				<tr>
-					<td><form:label path="cardType"><spring:message code="label.cardtype"/> </form:label></td>
-					<td><form:select path="cardType">
-						<form:options/>
-						</form:select> </td>
-					<td><form:errors path="cardType"/></td>
-				</tr>
-				<tr>
-					<td><form:label path="paymentInfo.currentBalance"><spring:message code="label.currentbalance"/> </form:label></td>
-					<td><form:input path="paymentInfo.currentBalance"/></td>
-					<td><form:errors path="paymentInfo.currentBalance"/></td>
-				</tr>				
+					<td><form:label path="balance"><spring:message code="label.currentbalance"/> </form:label></td>
+					<td><form:input path="balance"/></td>
+					<td><form:errors path="balance"/></td>
+				</tr>			
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="Add" class="btn btn-success"></td>
 					<td/>
@@ -51,21 +56,22 @@
 		<table class="table table-bordered">
 			<tr><th>NAME</th>
     			<th>LAST NAME</th>
-    			<th>DELETE</th>
-    			<th>EDIT</th>
+    			<th>BALANCE</th>
+    			<th>EDIT</th>    			
     			<th> + / -</th>
     			<th>VISITS</th>
     			<th>DETAILS</th>
+    			<th></th>
   			</tr>
 			<c:forEach var="customer" items="${customerList}" varStatus="loop">
-				<c:choose>
-					<c:when test="${customer.paymentInfo.currentBalance <= 0}">
-						<tr bgcolor="#FF0000">
-					</c:when>
-					<c:otherwise>
-						<tr>
-					</c:otherwise>
-				</c:choose>
+<%-- 				<c:choose> --%>
+<%-- 					<c:when test="${customer.balance <= 0}"> --%>
+<!-- 						<tr bgcolor="#FF0000"> -->
+<%-- 					</c:when> --%>
+<%-- 					<c:otherwise> --%>
+<!-- 						<tr> -->
+<%-- 					</c:otherwise> --%>
+<%-- 				</c:choose> --%>
 					<!--  
 					<td>${contact.id}</td>
 					-->
@@ -75,27 +81,39 @@
 					<!--
 					<td>${customer.email}</td>
 					-->
-					<td><input type="button" value="delete" onclick="location.href='deleteCustomer?id=${customer.id}'" class="btn btn-danger btn-block"></td>
+<%-- 					<td><input type="button" value="delete" onclick="location.href='deleteCustomer?id=${customer.id}'" class="btn btn-danger btn-block"></td> --%>
+					<td>${customer.balance}</td>
 					<td><input type="button" value="edit" onclick="location.href='editCustomer?id=${customer.id}'" class="btn btn-success btn-block"></td>
 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'" class="btn btn-default btn-sm">
 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'" class="btn btn-default btn-sm">
 					</td>
-					<td>${customer.entriesLeft}</td>
+					<td>${customer.courseList.size()}</td>
 					<td><input type="submit" class="btn btn-info" value="Details" onclick="location.href='customerDetails?id=${customer.id}'"/></td>
-					<script type="text/javascript">
-						$(document).ready(function(){
-						$("#customer${loop.count}FirstName").click(function(){
-							var str = "<table border='1' frame='box'>"+
-							"<tr><th>First Name</th><th>Last Name</th><th>Current Balance</th><th>To Pay</th></tr>"+
-							"<tr><td>${customer.firstName}</td><td>${customer.lastName}</td><td>${customer.paymentInfo.currentBalance}</td><td>${customer.paymentInfo.amountToPay}</td></tr></table>";
-							$("#customer_info_form").html(str).dialog("open");
-						})});
-					</script>
+					<td><button class="btn btn-success" data-toggle="modal" onclick="location.href='buyCard?id=${customer.id}'">Buy Card</button></td>
 				</tr>
 			</c:forEach>
-	</table>
-		
+	</table>		
 	<input type="button" value="home" onclick="location.href='home'" class="btn btn-primary"">
+	
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">Buy Card</h4>
+	      </div>
+	      <div class="modal-body">
+	         Card Type:<input name="cardType">
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" onclick="">Save changes</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
 </div>
 
-<%@ include file="footer.jsp"%>
+<%@ include file="sbm_footer.jsp"%>

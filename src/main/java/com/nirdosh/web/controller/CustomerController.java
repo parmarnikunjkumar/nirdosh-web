@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.Log4jConfigListener;
 
 import com.nirdosh.data.model.Customer;
+import com.nirdosh.data.model.CustomerCard;
 import com.nirdosh.data.model.Price;
 import com.nirdosh.enums.CardType;
 import com.nirdosh.service.CustomerService;
@@ -49,6 +50,7 @@ public class CustomerController {
 	public String getCustomer(HttpServletRequest request, Model model) {
 
 		model.addAttribute("customer", new Customer());
+		model.addAttribute("cardTypes",CardType.values());
 		model.addAttribute("customerList",customerService.getAll());
 
 		return "sbm_customer";
@@ -62,19 +64,30 @@ public class CustomerController {
 			model.addAttribute("result", result);
 			return "sbm_customer";
 		} else {
-			Query query = new Query(Criteria.where("cardType").is(
-					customer.getCardType()));
-			Price price = priceService.getPrice(customer.getCardType());
-			setPrice(customer, price);
-			
-			customer.setEntriesLeft(customer.getCardType().getNumber());
-			
+//			Query query = new Query(Criteria.where("cardType").is(
+//					customer.getCardType()));
+//			Price price = priceService.getPrice(customer.getCardType());
+//			setPrice(customer, price);
+//			
+//			customer.setEntriesLeft(customer.getCardType().getNumber());			
 			customerService.save(customer);
 			return "redirect:/customer";
 		}
 
 	}
 
+	@RequestMapping("/buyCard")
+	public String buyCard(String id){
+		Customer customer = customerService.getCustomerById(id);
+		CustomerCard customerCard = new CustomerCard(CardType.CARD10);
+		customer.setCustomerCard(customerCard);
+		customer.setBalance(customer.getBalance()+customerCard.getBalance());
+		customer.setEntriesLeft(customer.getEntriesLeft()+customerCard.getEntriesLeft());
+		
+		customerService.save(customer);
+		
+		return "redirect:/customer";
+	}
 	@RequestMapping("/deleteCustomer")
 	public ModelAndView deleteCustomer(String id) {
 		customerService.delete(id);
@@ -101,10 +114,6 @@ public class CustomerController {
 	}
 	@RequestMapping("/updateCustomer")
 	public ModelAndView updateCustomer(Customer customer, Model model) {
-		
-		Price price = priceService.getPrice(customer.getCardType());
-				
-		setPrice(customer, price);
 		
 		customerService.save(customer);
 

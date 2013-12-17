@@ -2,17 +2,26 @@ package com.nirdosh.enums;
 
 public enum CardType {
 	
-	CARD10(10),DROPIN(0),PRIVATE(1);
+	CARD10(10,135);
 	
 	private int number;
+	private int price;
 	
-	private CardType(int number){
+	private CardType(int number, int price){
 		this.number = number;
+		this.price = price;
 	}
 	
 	public int getNumber(){
-		return number;
-		
+		return number;		
+	}
+	
+	public int getPrice(){
+		return price;
+	}
+	
+	public float getSinglePrice(){
+		return price/number;
 	}
 
 }

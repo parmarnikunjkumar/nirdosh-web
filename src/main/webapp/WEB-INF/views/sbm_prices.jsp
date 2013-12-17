@@ -45,4 +45,4 @@
 		<input type="button" value="home" onclick="location.href='home'" class="btn btn-primary">
 </div>
 		
-<%@ include file="footerFrame.jsp"%>
+<%@ include file="sbm_footer.jsp"%>

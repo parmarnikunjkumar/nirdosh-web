@@ -1,7 +1,7 @@
 <%@ include file="sbm_header.jsp"%>	
 <%@ include file="sbm_navigation_bar.jsp"%>
 <div class="container">
-	<form:form action="done"  commandName="course" method="post">
+	<form:form action="doneAddCustomers"  commandName="course" method="post">
 		<form:hidden path="id"/>
 	<table class="table table-bordered">
 			<tr>
@@ -30,7 +30,7 @@
 			</c:forEach>
 		</table>
 		<input type="submit" value="Add" class="btn btn-success">
-		<input type="button" value="cancel" onclick="location.href='cancel'" class="btn btn-info"/>
+		<input type="button" value="cancel" onclick="location.href='course'" class="btn btn-info"/>
 	</form:form>
 </div>
-<%@ include file="footerFrame.jsp"%>
+<%@ include file="sbm_footer.jsp"%>

@@ -31,17 +31,17 @@ public class Customer implements Serializable {
 	
 	private String mobile;
 	
-	private String home;
-	
-	private CardType cardType;
+	private String home;	
 	
 	private int entriesLeft;
 	
 	private List<Address> addresses;
 	
-	private PaymentInfo paymentInfo;
-	
 	private List<String> courseList;
+	
+	private CustomerCard customerCard;
+	
+	private float balance;
 	
 	public String getId() {
 		return id;
@@ -83,14 +83,6 @@ public class Customer implements Serializable {
 		this.telephones = telephones;
 	}
 
-	public CardType getCardType() {
-		return cardType;
-	}
-
-	public void setCardType(CardType cardType) {
-		this.cardType = cardType;
-	}
-
 	public int getEntriesLeft() {
 		return entriesLeft;
 	}
@@ -105,17 +97,7 @@ public class Customer implements Serializable {
 
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
-	}	
-
-	public PaymentInfo getPaymentInfo() {
-		return paymentInfo;
-	}
-
-	public void setPaymentInfo(PaymentInfo paymentInfo) {
-		this.paymentInfo = paymentInfo;
-	}
-	
-	
+	}		
 
 	public String getMobile() {
 		return mobile;
@@ -142,6 +124,23 @@ public class Customer implements Serializable {
 
 	public void setCourseList(List<String> courseList) {
 		this.courseList = courseList;
+	}	
+
+	public CustomerCard getCustomerCard() {
+		if(customerCard== null) customerCard = new CustomerCard();
+		return customerCard;
+	}
+
+	public void setCustomerCard(CustomerCard customerCard) {
+		this.customerCard = customerCard;
+	}
+	
+	public float getBalance() {
+		return balance;
+	}
+
+	public void setBalance(float balance) {
+		this.balance = balance;
 	}
 
 	@Override

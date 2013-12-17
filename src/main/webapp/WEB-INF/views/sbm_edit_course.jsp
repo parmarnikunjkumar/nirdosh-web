@@ -23,21 +23,26 @@
 					<td><form:errors path="onDate"/></td>	
 				</tr>
 				<tr>
-					<td><form:label path="duration">DURATION</form:label></td>
-					<td><form:input path="duration"/></td>
-					<td><form:errors path="duration"/></td>
+					<td><form:label path="price">PRICE</form:label></td>
+					<td><form:input path="price"/></td>
+					<td><form:errors path="price"/></td>
 				</tr>
 				<tr>
-					<td><input type="button" value="Add Customer" onclick="location.href='addCustomersInCourse?courseId=${course.id}'" class="btn btn-success"></td>
-					
+					<td></td>
+					<td align="center"><input type="button" value="Add Customer" onclick="location.href='addCustomersInCourse?courseId=${course.id}'" class="btn btn-success"></td>
+					<td></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.update"/>" class="btn btn-success"> </td>
+					<td><input type="submit" value="<spring:message code="label.update"/>" class="btn btn-success"> </td>
+					<td/>
+					<td><input type="button" value="Delete Course" onclick="location.href='deleteCourse?id=${course.id}'" class="btn btn-danger pull-right"> </td>
 				</tr>
 				<tr>
-					<td> <input type="button" value="CANCEL" onclick="location.href='cancel'" class="btn btn-primary"></td>
+					<td> <input type="button" value="CANCEL" onclick="location.href='course'" class="btn btn-primary"></td>
+					<td/>
+					<td/>
 				</tr>
 			</table>
 		</form:form>
 </div>
-<%@ include file="footerFrame.jsp"%>
+<%@ include file="sbm_footer.jsp"%>
