@@ -95,13 +95,26 @@ public class CourseController {
 		repeatCourse.setDuration(trainingCourse.getDuration());
 		repeatCourse.setName(trainingCourse.getName());
 		repeatCourse.setOnDate(currentOnDate.plusWeeks(1).toDate());
+		repeatCourse.setPrice(trainingCourse.getPrice());
 		trainningCourseService.addCourse(repeatCourse);
 		
-		// update customers with this course as well
+		// update customers with this course and deduce their balance by course price as well
 		for(String customerId: repeatCourse.getCustomersId()){
 			Customer customer = customerService.getCustomerById(customerId);
 			if(!customer.getCourseList().contains(repeatCourse.getId())){
 				customer.getCourseList().add(repeatCourse.getId());
+				if(customer.getCustomerCard().isCardValid()){
+					customer.getCustomerCard().deductOne();
+					// TODO: must be changed to something else
+					customer.setBalance(customer.getBalance()-customer.getCustomerCard().getCardType().getSinglePrice());
+					customer.setEntriesLeft(customer.getEntriesLeft()-1);
+				}else{
+					double balance = customer.getBalance() - repeatCourse.getPrice();
+					LOGGER.debug("Course Price :{}",repeatCourse.getPrice());
+					LOGGER.debug("Customer Balance Now:{}",balance);
+					customer.setBalance(balance);
+				}
+				
 				customerService.save(customer);
 			}
 		}
@@ -145,7 +158,10 @@ public class CourseController {
 					customer.setBalance(customer.getBalance()-customer.getCustomerCard().getCardType().getSinglePrice());
 					customer.setEntriesLeft(customer.getEntriesLeft()-1);
 				}else{
-					customer.setBalance(customer.getBalance()-course.getPrice());
+					double balance = customer.getBalance() - courseToSave.getPrice();
+					LOGGER.debug("Course Price :{}",courseToSave.getPrice());
+					LOGGER.debug("Customer Balance Now:{}",balance);
+					customer.setBalance(balance);
 				}
 				
 				customerService.save(customer);

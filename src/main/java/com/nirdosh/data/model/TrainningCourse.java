@@ -31,7 +31,7 @@ public class TrainningCourse implements Serializable{
 	
 	private List<String> customersId;
 	
-	private float price;
+	private double price;
 
 	public String getId() {
 		return id;
@@ -82,11 +82,11 @@ public class TrainningCourse implements Serializable{
 		this.customersId = customersId;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	

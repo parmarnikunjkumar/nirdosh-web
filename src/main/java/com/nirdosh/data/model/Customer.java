@@ -41,7 +41,7 @@ public class Customer implements Serializable {
 	
 	private CustomerCard customerCard;
 	
-	private float balance;
+	private double balance;
 	
 	public String getId() {
 		return id;
@@ -135,11 +135,11 @@ public class Customer implements Serializable {
 		this.customerCard = customerCard;
 	}
 	
-	public float getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(float balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 

@@ -2,6 +2,8 @@ package com.nirdosh.data.model;
 
 import java.io.Serializable;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,6 +16,8 @@ public class CustomerCard implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger LOGGER = LoggerFactory.getLogger(CustomerCard.class);
 	
 	public CustomerCard(){
 		
@@ -82,7 +86,12 @@ public class CustomerCard implements Serializable{
 	}
 	
 	public boolean isCardValid(){
-		if(balance==0) return false;
+		LOGGER.debug("Balance:{}",balance);
+		if(balance==0) {
+			LOGGER.debug("Card is not Valid");
+			return false;
+		}
+		LOGGER.debug("Card is still Valid");
 		return true;
 	}
 	
