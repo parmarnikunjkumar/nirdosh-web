@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.nirdosh.enums.CardType;
@@ -17,6 +18,7 @@ public class CustomerCard implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Transient
 	private static Logger LOGGER = LoggerFactory.getLogger(CustomerCard.class);
 	
 	public CustomerCard(){
@@ -37,7 +39,7 @@ public class CustomerCard implements Serializable{
 	
 	private int entriesLeft;
 	
-	private float balance;
+	private double balance;
 	
 	
 	public String getId() {
@@ -72,11 +74,11 @@ public class CustomerCard implements Serializable{
 		this.cardType = cardType;
 	}
 
-	public float getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(float balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}	
 	

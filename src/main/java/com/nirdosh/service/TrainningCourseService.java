@@ -2,6 +2,8 @@ package com.nirdosh.service;
 
 import java.util.List;
 
+import org.joda.time.DateTime;
+
 import com.nirdosh.data.model.TrainningCourse;
 
 public interface TrainningCourseService {
@@ -17,5 +19,9 @@ public interface TrainningCourseService {
 	void save(TrainningCourse course);
 	
 	List<TrainningCourse> getCourses(List<String> ids);
+	
+	TrainningCourse repeatCourse(String id);
+	
+	List<TrainningCourse> getCourses(DateTime from);
 
 }

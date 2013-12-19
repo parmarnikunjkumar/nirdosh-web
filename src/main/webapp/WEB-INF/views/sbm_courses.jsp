@@ -27,6 +27,13 @@
 				<td><form:errors path="price"></form:errors></td>
 			</tr>
 			<tr>
+				<td><form:label path="courseType">Course Type</form:label></td>
+				<td>
+					<form:select path="courseType" items="${courseTypes}"/>
+				</td>
+				<td/>
+			</tr>
+			<tr>
 				<td><input type="submit" value="Add" class="btn btn-success" /></td>
 				<td />
 				<td />
@@ -49,6 +56,7 @@
 						<tr>
 							<th>NAME</th>
 							<th>DATE</th>
+							<th>TYPE</th>
 							<th>Members</th>
 							<th>EDIT</th>
 							<!-- 							<th>DELETE</th> -->
@@ -56,21 +64,23 @@
 						</tr>
 
 						<c:forEach var="course" items="${coursesList}">
+							<form:form commandName="course" action="updateCourse" method="post">
+							<form:hidden path="id" value="${course.id}"/>
 							<tr>
 								<td>${course.name}</td>
 
 								<td><fmt:formatDate value="${course.onDate}"
 										pattern="dd-MM-yyyy HH:mm" /></td>
-
+								<td>${course.courseType}</td>
 								<td>${fn:length(course.customersId)}</td>
-
-								<td><input type="button" value="Edit"
-									onclick="location.href='editCourse?id=${course.id}'"
-									class="btn btn-success"></td>
+								<td>
+									<input type="submit" value="Edit" name="edit" class="btn btn-success">
+<!-- 									<input type="button" value="Edit" -->
+<%-- 									onclick="location.href='editCourse?id=${course.id}'" --%>
+<!-- 									class="btn btn-success"> -->
+								</td>
 								<%-- 							<td><input type="button" value="Delete" onclick="location.href='deleteCourse?id=${course.id}'" class="btn btn-danger"></td> --%>
-								<td><input type="button" value="Repeat"
-									onclick="location.href='repeatCourse?id=${course.id}'"
-									class="btn btn-info"></td>
+								<td><input type="submit" value="Repeat"	name="repeat" class="btn btn-info"></td>
 
 
 								<%-- 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'"> --%>
@@ -78,6 +88,7 @@
 								<!-- 					</td> -->
 								<%-- 					<td>${customer.entriesLeft}</td> --%>
 							</tr>
+						</form:form>
 						</c:forEach>
 					</table>
 				</td>

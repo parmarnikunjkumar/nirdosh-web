@@ -14,14 +14,14 @@
 		<!-- 3rdparty Loggers -->
 		
 	<logger name="org.springframework">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	<logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="org.springframework.context">
@@ -29,20 +29,24 @@
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	
 	
 	<!-- Application Loggers -->
-	<logger name="nirdosh.web">
+	<logger name="com.nirdosh">
 		<level value="debug" />
 	</logger>
-	<logger name="com.nirdosh.data.model">
-		<level value="debug" />
-	</logger>
+<!-- 	<logger name="com.nirdosh.data.model"> -->
+<!-- 		<level value="debug" /> -->
+<!-- 	</logger> -->
+<!-- 	<logger name="com.nirdosh.web.controller"> -->
+<!-- 		<level value="debug" /> -->
+<!-- 	</logger> -->
+	
 		<!-- Root Logger -->
 	<root>
-		<priority value="debug" />
+		<priority value="info" />
 		<appender-ref ref="console" />
 	</root>
 	

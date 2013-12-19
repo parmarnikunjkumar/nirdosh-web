@@ -1,11 +1,20 @@
 package com.nirdosh.enums;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.annotation.Transient;
+
 public enum CardType {
 	
-	CARD10(10,135);
+	
+	CARD10(10,135),
+	CARD5(5,70);
+	
+	@Transient
+	private static Logger LOGGER = LoggerFactory.getLogger(CardType.class);
 	
 	private int number;
-	private int price;
+	private double price;
 	
 	private CardType(int number, int price){
 		this.number = number;
@@ -16,12 +25,14 @@ public enum CardType {
 		return number;		
 	}
 	
-	public int getPrice(){
+	public double getPrice(){
 		return price;
 	}
 	
-	public float getSinglePrice(){
-		return price/number;
+	public double getSinglePrice(){
+		double result = price/number;
+		LOGGER.debug("Result:{}",result);
+		return result;
 	}
 
 }

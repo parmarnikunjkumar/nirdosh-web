@@ -1,6 +1,7 @@
 package com.nirdosh.data.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +9,9 @@ import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.nirdosh.enums.CardType;
+import com.nirdosh.enums.CourseType;
 
 @Document
 public class TrainningCourse implements Serializable{
@@ -30,6 +34,8 @@ public class TrainningCourse implements Serializable{
 	private List<Customer> customers;
 	
 	private List<String> customersId;
+	
+	private CourseType courseType;
 	
 	private double price;
 
@@ -75,6 +81,9 @@ public class TrainningCourse implements Serializable{
 	}
 
 	public List<String> getCustomersId() {
+		if(customersId == null){
+			customersId = new ArrayList<String>();
+		}
 		return customersId;
 	}
 
@@ -89,6 +98,13 @@ public class TrainningCourse implements Serializable{
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
+	public CourseType getCourseType() {
+		return courseType;
+	}
+
+	public void setCourseType(CourseType courseType) {
+		this.courseType = courseType;
+	}
 	
 }

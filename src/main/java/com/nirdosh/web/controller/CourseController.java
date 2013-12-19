@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.nirdosh.data.model.Customer;
 import com.nirdosh.data.model.TrainningCourse;
+import com.nirdosh.enums.CourseType;
 import com.nirdosh.service.CustomerService;
 import com.nirdosh.service.TrainningCourseService;
 
@@ -50,6 +51,7 @@ public class CourseController {
 		List<TrainningCourse> courses = trainningCourseService.getAll();
 		model.addAttribute("coursesList", courses);
 		model.addAttribute("course", new TrainningCourse());
+		model.addAttribute("courseTypes", CourseType.values());
 		return "sbm_courses";
 	}
 
@@ -61,15 +63,16 @@ public class CourseController {
 		return "redirect:/course";
 	}
 
-	@RequestMapping(value = "/editCourse")
-	public String editCourse(HttpServletRequest request, String id, Model model) {
-		TrainningCourse course = trainningCourseService.getCourse(id);
+	@RequestMapping(value = "/updateCourse", params="edit", method=RequestMethod.POST)
+	public String editCourse(TrainningCourse course, Model model) {
+	    course = trainningCourseService.getCourse(course.getId());
 		model.addAttribute("course", course);
+		model.addAttribute("customerList", customerService.getAll());
 		return "sbm_edit_course";
 
 	}
 
-	@RequestMapping(value = "/updateCourse")
+	@RequestMapping(value = "/updateCourse",params="update",method=RequestMethod.POST)
 	public ModelAndView updateCourse(@ModelAttribute TrainningCourse course,
 			Model model) {
 		System.out.println(course.getName());
@@ -84,49 +87,24 @@ public class CourseController {
 
 	}
 
-	@RequestMapping(value = "/repeatCourse")
-	public String repeatCourse(HttpServletRequest request, String id) {
-		TrainningCourse trainingCourse = trainningCourseService.getCourse(id);
-		DateTime currentOnDate = new DateTime(trainingCourse.getOnDate());
+	@RequestMapping(value = "/updateCourse", params="repeat", method=RequestMethod.POST)
+	public String repeatCourse(TrainningCourse course) {
 		
-		TrainningCourse repeatCourse = new TrainningCourse();
-		repeatCourse.setCustomers(trainingCourse.getCustomers());
-		repeatCourse.setCustomersId(trainingCourse.getCustomersId());
-		repeatCourse.setDuration(trainingCourse.getDuration());
-		repeatCourse.setName(trainingCourse.getName());
-		repeatCourse.setOnDate(currentOnDate.plusWeeks(1).toDate());
-		repeatCourse.setPrice(trainingCourse.getPrice());
-		trainningCourseService.addCourse(repeatCourse);
+		TrainningCourse repeatCourse = trainningCourseService.repeatCourse(course.getId());
 		
 		// update customers with this course and deduce their balance by course price as well
 		for(String customerId: repeatCourse.getCustomersId()){
-			Customer customer = customerService.getCustomerById(customerId);
-			if(!customer.getCourseList().contains(repeatCourse.getId())){
-				customer.getCourseList().add(repeatCourse.getId());
-				if(customer.getCustomerCard().isCardValid()){
-					customer.getCustomerCard().deductOne();
-					// TODO: must be changed to something else
-					customer.setBalance(customer.getBalance()-customer.getCustomerCard().getCardType().getSinglePrice());
-					customer.setEntriesLeft(customer.getEntriesLeft()-1);
-				}else{
-					double balance = customer.getBalance() - repeatCourse.getPrice();
-					LOGGER.debug("Course Price :{}",repeatCourse.getPrice());
-					LOGGER.debug("Customer Balance Now:{}",balance);
-					customer.setBalance(balance);
-				}
-				
-				customerService.save(customer);
-			}
+			customerService.attendCourse(customerId, repeatCourse);
 		}
-
 		
 		return "redirect:/course";
 
 	}
 
-	@RequestMapping(value = "/addCustomersInCourse")
-	public String addCustomers(String courseId, Model model) {
-		TrainningCourse course = trainningCourseService.getCourse(courseId);
+	@RequestMapping(value = "/updateCourse", params="addCustomer", method=RequestMethod.POST)
+	public String addCustomers(TrainningCourse course, Model model) {
+		
+		course = trainningCourseService.getCourse(course.getId());
 		List<Customer> customerList = customerService.getAll();
 		model.addAttribute("course", course);
 		model.addAttribute("customerList", customerList);
@@ -146,25 +124,7 @@ public class CourseController {
 
 		// update all customers deduct thier balance with this course as well
 		for (String customerId : course.getCustomersId()) {
-			Customer customer = customerService.getCustomerById(customerId);
-			// no duplicates
-			if (customer.getCourseList().contains(course.getId())) {
-				continue;
-			}
-				customer.getCourseList().add(course.getId());
-				if(customer.getCustomerCard().isCardValid()){
-					customer.getCustomerCard().deductOne();
-					// TODO: must be changed to something else
-					customer.setBalance(customer.getBalance()-customer.getCustomerCard().getCardType().getSinglePrice());
-					customer.setEntriesLeft(customer.getEntriesLeft()-1);
-				}else{
-					double balance = customer.getBalance() - courseToSave.getPrice();
-					LOGGER.debug("Course Price :{}",courseToSave.getPrice());
-					LOGGER.debug("Customer Balance Now:{}",balance);
-					customer.setBalance(balance);
-				}
-				
-				customerService.save(customer);
+				customerService.attendCourse(customerId, courseToSave);
 			}
 		return new ModelAndView("redirect:/course");
 	}

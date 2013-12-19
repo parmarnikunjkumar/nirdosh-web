@@ -40,7 +40,7 @@ public class RestCustomerController {
 	@ResponseBody
 	public void decrementEntryCount(@PathVariable String id){
 		Customer customer = customerService.getCustomerById(id);
-		customer.setEntriesLeft(customer.getEntriesLeft()-1);
+		customer.getCustomerCard().setEntriesLeft(customer.getCustomerCard().getEntriesLeft()-1);
 		customerService.save(customer);
 	}
 	
@@ -48,7 +48,7 @@ public class RestCustomerController {
 	@ResponseBody
 	public Customer decrementEntry(@PathVariable String id){
 		Customer customer = customerService.getCustomerById(id);
-		customer.setEntriesLeft(customer.getEntriesLeft()-1);
+		customer.getCustomerCard().setEntriesLeft(customer.getCustomerCard().getEntriesLeft()-1);
 		customerService.save(customer);
 		return customer;
 	}
@@ -57,7 +57,7 @@ public class RestCustomerController {
 	@ResponseBody
 	public void incrementEntryCount(@PathVariable String id){
 		Customer customer = customerService.getCustomerById(id);
-		customer.setEntriesLeft(customer.getEntriesLeft()+1);
+		customer.getCustomerCard().setEntriesLeft(customer.getCustomerCard().getEntriesLeft()+1);
 		customerService.save(customer);
 	}
 	
@@ -65,7 +65,7 @@ public class RestCustomerController {
 	@ResponseBody
 	public Customer incrementEntry(@PathVariable String id){
 		Customer customer = customerService.getCustomerById(id);
-		customer.setEntriesLeft(customer.getEntriesLeft()+1);
+		customer.getCustomerCard().setEntriesLeft(customer.getCustomerCard().getEntriesLeft()+1);
 		customerService.save(customer);
 		return customer;		
 	}

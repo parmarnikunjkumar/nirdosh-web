@@ -1,5 +1,11 @@
 <%@ include file="sbm_header.jsp"%>
 <%@ include file="sbm_navigation_bar.jsp"%>
+<script type="text/javascript">
+	function updateBalance(id){
+		var balance = $('input[id=amount_to_pay]').val();
+		$.post("customer/updateBalance?id="+id+"&balance="+balance);
+	}
+</script>
 <div class="container">
 		<h2>Customer Manager</h2>
 		<form:form method="post" action="addCustomer" commandName="customer" role="form">
@@ -42,7 +48,7 @@
 <%-- 					<td><form:errors path="paymentInfo.currentBalance"/></td> --%>
 <!-- 				</tr>	 -->
 				<tr>
-					<td><form:label path="balance"><spring:message code="label.currentbalance"/> </form:label></td>
+					<td><form:label path="balance"><spring:message code="label.currentbalance"/></form:label></td>
 					<td><form:input path="balance"/></td>
 					<td><form:errors path="balance"/></td>
 				</tr>			
@@ -61,37 +67,36 @@
     			<th> + / -</th>
     			<th>VISITS</th>
     			<th>DETAILS</th>
+    			<th>PAY</th>
     			<th></th>
   			</tr>
 			<c:forEach var="customer" items="${customerList}" varStatus="loop">
-<%-- 				<c:choose> --%>
-<%-- 					<c:when test="${customer.balance <= 0}"> --%>
-<!-- 						<tr bgcolor="#FF0000"> -->
-<%-- 					</c:when> --%>
-<%-- 					<c:otherwise> --%>
-<!-- 						<tr> -->
-<%-- 					</c:otherwise> --%>
-<%-- 				</c:choose> --%>
-					<!--  
-					<td>${contact.id}</td>
-					-->
-					<td id='customer${loop.count}FirstName'>${customer.firstName}</td>
-					  
+			<form:form method="post" commandName="customer" role="form" action="updateCustomer">
+			<tr>
+					<form:hidden path="id" value="${customer.id}"/>
+					<td>${customer.firstName}</td>
 					<td>${customer.lastName}</td>
-					<!--
-					<td>${customer.email}</td>
-					-->
 <%-- 					<td><input type="button" value="delete" onclick="location.href='deleteCustomer?id=${customer.id}'" class="btn btn-danger btn-block"></td> --%>
-					<td>${customer.balance}</td>
-					<td><input type="button" value="edit" onclick="location.href='editCustomer?id=${customer.id}'" class="btn btn-success btn-block"></td>
+					<td>${customer.totalBalance}</td>
+					<td><input type="submit" value="edit" name="edit" class="btn btn-success btn-block"></td>
 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'" class="btn btn-default btn-sm">
 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'" class="btn btn-default btn-sm">
 					</td>
 					<td>${customer.courseList.size()}</td>
-					<td><input type="submit" class="btn btn-info" value="Details" onclick="location.href='customerDetails?id=${customer.id}'"/></td>
-					<td><button class="btn btn-success" data-toggle="modal" onclick="location.href='buyCard?id=${customer.id}'">Buy Card</button></td>
+					<td>
+						<input type="submit" class="btn btn-info" value="Details" name="details"/>
+					</td>
+					<td>						
+						<input name="creditBalance" style="width: 50px"><input type="submit" class="btn btn-success pull-right" value="Pay"/>
+					</td>
+					<td>
+						<form:select path="customerCard.cardType" items="${cardTypes}"/>
+						<input type="submit" class="btn btn-success" value="Buy Card" name="buyCard"/>
+					</td>
+					
 				</tr>
-			</c:forEach>
+			</form:form>
+		</c:forEach>
 	</table>		
 	<input type="button" value="home" onclick="location.href='home'" class="btn btn-primary"">
 	

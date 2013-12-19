@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -24,13 +25,7 @@ public class CustomerTest {
 		
 		mongoOperations = new MongoTemplate(new Mongo("localhost"), "nirdoshdbtest");
 		 mongoOperations.dropCollection(Customer.class);
-		 mongoOperations.dropCollection(PaymentInfo.class);
 		 mongoOperations.dropCollection(Address.class);
-		
-		PaymentInfo payment = new PaymentInfo();
-		payment.setCurrentBalance(12);
-		payment.setCurrency("Euro");
-//		mongoOperations.save(payment);
 		
 		
 		Address address = new Address();		
@@ -40,6 +35,7 @@ public class CustomerTest {
 		address.setPlz("14532");
 		address.setState("Brandenburg");
 		
+		
 //		mongoOperations.save(address);
 		
 		List<Address> addressList = new ArrayList<Address>();
@@ -47,7 +43,9 @@ public class CustomerTest {
 		Customer customer = new Customer();
 		customer.setAddresses(addressList);
 		customer.setFirstName("test");
-		customer.setPaymentInfo(payment);
+		
+		Payment payment = new Payment(DateTime.now(), 123);
+		customer.getPaymentHistory().add(payment);
 		
 		mongoOperations.save(customer);
 	}
@@ -60,7 +58,6 @@ public class CustomerTest {
 		
 		Customer customer = mongoOperations.findOne(query,Customer.class);
 		assertEquals("im Tal", customer.getAddresses().get(0).getStreetName());
-		assertEquals(12, customer.getPaymentInfo().getCurrentBalance(),0.0);
 		
 	}
 

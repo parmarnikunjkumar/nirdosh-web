@@ -43,14 +43,19 @@
 <%-- 					<td><form:errors path="cardType"/></td> --%>
 <!-- 				</tr>	 -->
 				<tr>
-					<td><form:label path="entriesLeft"><spring:message code="label.entriesleft"/> </form:label></td>
-					<td><form:input path="entriesLeft"/></td>
-					<td><form:errors path="entriesLeft"/></td>				
+					<td><form:label path="customerCard.entriesLeft"><spring:message code="label.entriesleft"/> </form:label></td>
+					<td><form:input path="customerCard.entriesLeft"/></td>
+					<td><form:errors path="customerCard.entriesLeft"/></td>				
 				</tr>
 				<tr>					
 					<td><form:label path="balance"><spring:message code="label.balance"/> </form:label></td>
 					<td><form:input path="balance"/></td>
 					<td><form:errors path="balance"/></td>			
+				</tr>
+				<tr>					
+					<td><form:label path="customerCard.balance"><spring:message code="label.card.balance"/> </form:label></td>
+					<td><form:input path="customerCard.balance"/></td>
+					<td><form:errors path="customerCard.balance"/></td>			
 				</tr>
 <!-- 				<tr>					 -->
 <%-- 					<td><form:label path="paymentInfo.amountToPay"><spring:message code="label.amounttopay"/> </form:label></td> --%>
@@ -75,7 +80,9 @@
 				</tr>
 				<tr>
 					<td> <input type="button" value="CANCEL" onclick="location.href='cancel'" class="btn btn-danger"></td>
-					<td> <input type="button" value="Delete User" onclick="location.href='deleteCustomer?id=${customer.id}'" class="btn btn-danger pull-right"></td>
+					<td> <input type="submit" value="Delete User"  name="delete" class="btn btn-danger pull-right">
+<%-- 						<input type="submit" value="Delete User" onclick="location.href='deleteCustomer?id=${customer.id}'" class="btn btn-danger pull-right"> --%>
+					</td>
 				</tr>
 			</table>
 		</form:form>

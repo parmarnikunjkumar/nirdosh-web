@@ -33,8 +33,6 @@ public class Customer implements Serializable {
 	
 	private String home;	
 	
-	private int entriesLeft;
-	
 	private List<Address> addresses;
 	
 	private List<String> courseList;
@@ -42,6 +40,8 @@ public class Customer implements Serializable {
 	private CustomerCard customerCard;
 	
 	private double balance;
+	
+	private List<Payment> paymentHistory;
 	
 	public String getId() {
 		return id;
@@ -81,14 +81,6 @@ public class Customer implements Serializable {
 
 	public void setTelephones(List<Telephone> telephones) {
 		this.telephones = telephones;
-	}
-
-	public int getEntriesLeft() {
-		return entriesLeft;
-	}
-
-	public void setEntriesLeft(int entriesLeft) {
-		this.entriesLeft = entriesLeft;
 	}	
 
 	public List<Address> getAddresses() {
@@ -141,13 +133,33 @@ public class Customer implements Serializable {
 
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}	
+	
+	public List<Payment> getPaymentHistory() {
+		if(paymentHistory == null){
+			paymentHistory = new ArrayList<Payment>();
+		}
+		return paymentHistory;
 	}
+
+	public void setPaymentHistory(List<Payment> paymentHistory) {
+		this.paymentHistory = paymentHistory;
+	}
+
+	/**
+	 * Return total balance a customer can have
+	 * @return totalBalance
+	 */
+	public double getTotalBalance(){
+		return balance + getCustomerCard().getBalance();
+	}
+	
 
 	@Override
 	public String toString() {
 		return String.format(
-				"Customer[customerID=%s firstName='%s' lastName='%s']", id,
-				firstName, lastName);
+				"Customer[customerID=%s firstName='%s' lastName='%s' Balance='%s']", id,
+				firstName, lastName,balance);
 	}
 
 }

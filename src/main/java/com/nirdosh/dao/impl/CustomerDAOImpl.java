@@ -28,8 +28,8 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	public void delete(String id) {
-		mongoOperations.remove(mongoOperations.findById(id, Customer.class));
-	
+		mongoOperations.remove(mongoOperations.findById(id, Customer.class));	
 	}
+	
 
 }
