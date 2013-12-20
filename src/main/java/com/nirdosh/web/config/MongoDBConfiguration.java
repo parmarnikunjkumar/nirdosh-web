@@ -25,13 +25,13 @@ public class MongoDBConfiguration  extends AbstractMongoConfiguration{
 		return new Mongo("localhost");
 	}
 	
-	@Override
-	public CustomConversions customConversions() {
-		List<Converter<?, ?>> converterList = new ArrayList<Converter<?,?>>();
-	    converterList.add(new DateTimeWriteConverter());
-	    converterList.add(new DateTimeReadConverter());
-	    
-	    return new CustomConversions(converterList);
-	}
+//	@Override
+//	public CustomConversions customConversions() {
+//		List<Converter<?, ?>> converterList = new ArrayList<Converter<?,?>>();
+//	    converterList.add(new DateTimeWriteConverter());
+//	    converterList.add(new DateTimeReadConverter());
+//	    
+//	    return new CustomConversions(converterList);
+//	}
 
 }

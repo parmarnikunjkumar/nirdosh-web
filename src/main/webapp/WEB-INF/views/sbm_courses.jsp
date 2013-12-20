@@ -46,6 +46,7 @@
 			<tr>
 				<td>
 					<h3>Courses available</h3>
+					<h4 class="pull-right">From:</h4>
 				</td>
 			</tr>
 		</thead>

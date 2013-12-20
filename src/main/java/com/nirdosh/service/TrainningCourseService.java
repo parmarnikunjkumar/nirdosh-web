@@ -5,6 +5,7 @@ import java.util.List;
 import org.joda.time.DateTime;
 
 import com.nirdosh.data.model.TrainningCourse;
+import com.nirdosh.web.forms.TrainningCourseForm;
 
 public interface TrainningCourseService {
 	
@@ -23,5 +24,7 @@ public interface TrainningCourseService {
 	TrainningCourse repeatCourse(String id);
 	
 	List<TrainningCourse> getCourses(DateTime from);
+	
+	void updateCourse(TrainningCourseForm courseForm);
 
 }

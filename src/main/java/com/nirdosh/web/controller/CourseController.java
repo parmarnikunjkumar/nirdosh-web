@@ -22,6 +22,7 @@ import com.nirdosh.data.model.TrainningCourse;
 import com.nirdosh.enums.CourseType;
 import com.nirdosh.service.CustomerService;
 import com.nirdosh.service.TrainningCourseService;
+import com.nirdosh.web.forms.TrainningCourseForm;
 
 @Controller
 public class CourseController {
@@ -48,7 +49,9 @@ public class CourseController {
 
 	@RequestMapping(value = "/course", method = RequestMethod.GET)
 	public String welcome(HttpServletRequest request, Model model) {
-		List<TrainningCourse> courses = trainningCourseService.getAll();
+//		List<TrainningCourse> courses = trainningCourseService.getAll();
+		DateTime dateTime = DateTime.now().minusMonths(1);
+		List<TrainningCourse> courses = trainningCourseService.getCourses(dateTime);
 		model.addAttribute("coursesList", courses);
 		model.addAttribute("course", new TrainningCourse());
 		model.addAttribute("courseTypes", CourseType.values());
@@ -74,10 +77,9 @@ public class CourseController {
 	}
 
 	@RequestMapping(value = "/updateCourse",params="update",method=RequestMethod.POST)
-	public String updateCourse(@ModelAttribute TrainningCourse course,
+	public String updateCourse(@ModelAttribute TrainningCourseForm courseForm,
 			Model model) {
-		System.out.println(course.getName());
-		trainningCourseService.save(course);
+		trainningCourseService.updateCourse(courseForm);
 		return "redirect:/course";
 	}
 

@@ -4,12 +4,18 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.nirdosh.dao.TrainningCourseDAO;
 import com.nirdosh.data.model.TrainningCourse;
+import com.nirdosh.enums.TrainningCourseField;
 import com.nirdosh.service.TrainningCourseService;
+import com.nirdosh.web.forms.TrainningCourseForm;
 
 @Service
 public class TrainningCourseServiceImpl implements TrainningCourseService {
@@ -64,8 +70,38 @@ public class TrainningCourseServiceImpl implements TrainningCourseService {
 	}
 
 	public List<TrainningCourse> getCourses(DateTime from) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Query courseQuery = new Query(Criteria.where(TrainningCourseField.ONDATE.getName()).gte(from));
+		return trainningCourseDAO.get(courseQuery);
+	}
+
+	public void updateCourse(TrainningCourseForm courseForm) {
+		Query courseQuery = new Query(Criteria.where("id").is(courseForm.getId()));
+		
+		Update courseUpdate = new Update();
+		
+		if(StringUtils.isNotEmpty(courseForm.getName())){
+			courseUpdate.set(TrainningCourseField.NAME.getName(), courseForm.getName());
+		}
+		
+		if(courseForm.getDuration()!= -1){
+			courseUpdate.set(TrainningCourseField.DURATION.getName(), courseForm.getDuration());
+		}
+		
+		if(courseForm.getCouseType()!=null){
+			courseUpdate.set(TrainningCourseField.COURSETYPE.getName(), courseForm.getCouseType());
+		}
+		
+		if(courseForm.getOnDate()!=null){
+			courseUpdate.set(TrainningCourseField.NAME.getName(), courseForm.getName());
+		}
+		
+		if(courseForm.getPrice()!= -1){
+			courseUpdate.set(TrainningCourseField.PRICE.getName(),courseForm.getPrice());
+		}
+		
+		trainningCourseDAO.update(courseQuery,courseUpdate);
+		
 	}
 
 }
