@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -44,7 +45,7 @@ public class CustomerTest {
 		customer.setAddresses(addressList);
 		customer.setFirstName("test");
 		
-		Payment payment = new Payment(DateTime.now(), 123);
+		Payment payment = new Payment(new Date(), 123);
 		customer.getPaymentHistory().add(payment);
 		
 		mongoOperations.save(customer);

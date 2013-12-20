@@ -1,6 +1,11 @@
 
 <%@ include file="sbm_header.jsp"%>	
 <%@ include file="sbm_navigation_bar.jsp"%>
+<script type="text/javascript">
+	$(function() { 		
+		$("#datepicker").datetimepicker();
+ 	});
+</script>
 <div class="container">
 		<h2>Course Edit</h2>
 		<form:form method="post" action="updateCourse" commandName="course">
@@ -13,8 +18,15 @@
 				</tr>
 				<tr>
 					<td><form:label path="onDate">ON</form:label></td>
-					<td><form:input path="onDate"/></td>
+					<td><form:input path="onDate" id="datepicker" /></td>
 					<td><form:errors path="onDate"/></td>	
+				</tr>
+				<tr>
+					<td><form:label path="courseType">Course Type</form:label></td>
+					<td>
+						<form:select path="courseType" items="${courseTypes}"/>
+					</td>
+					<td/>
 				</tr>
 				<tr>
 					<td><form:label path="price">PRICE</form:label></td>
@@ -31,7 +43,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="<spring:message code="label.update"/>" class="btn btn-success"> </td>
+					<td><input type="submit" value="<spring:message code="label.update"/>" name="update" class="btn btn-success"> </td>
 					<td/>
 					<td><input type="button" value="Delete Course" onclick="location.href='deleteCourse?id=${course.id}'" class="btn btn-danger pull-right"> </td>
 				</tr>

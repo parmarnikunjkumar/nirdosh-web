@@ -64,7 +64,6 @@
     			<th>LAST NAME</th>
     			<th>BALANCE</th>
     			<th>EDIT</th>    			
-    			<th> + / -</th>
     			<th>VISITS</th>
     			<th>DETAILS</th>
     			<th>PAY</th>
@@ -79,9 +78,9 @@
 <%-- 					<td><input type="button" value="delete" onclick="location.href='deleteCustomer?id=${customer.id}'" class="btn btn-danger btn-block"></td> --%>
 					<td>${customer.totalBalance}</td>
 					<td><input type="submit" value="edit" name="edit" class="btn btn-success btn-block"></td>
-					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'" class="btn btn-default btn-sm">
-						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'" class="btn btn-default btn-sm">
-					</td>
+<%-- 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'" class="btn btn-default btn-sm"> --%>
+<%-- 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'" class="btn btn-default btn-sm"> --%>
+<!-- 					</td> -->
 					<td>${customer.courseList.size()}</td>
 					<td>
 						<input type="submit" class="btn btn-info" value="Details" name="details"/>

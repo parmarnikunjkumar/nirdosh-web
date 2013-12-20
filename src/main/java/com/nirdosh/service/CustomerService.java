@@ -7,6 +7,7 @@ import com.nirdosh.data.model.CustomerCard;
 import com.nirdosh.data.model.TrainningCourse;
 import com.nirdosh.enums.CardType;
 import com.nirdosh.enums.CourseType;
+import com.nirdosh.form.CustomerForm;
 
 public interface CustomerService {
 	
@@ -23,4 +24,6 @@ public interface CustomerService {
 	void updateCard(String id, CardType cardType);
 	
 	void attendCourse(String id, TrainningCourse course);
+	
+	void updateCustomer(CustomerForm customerForm);
 }

@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,11 @@ import com.nirdosh.data.model.Payment;
 import com.nirdosh.data.model.TrainningCourse;
 import com.nirdosh.enums.CardType;
 import com.nirdosh.enums.CourseType;
+import com.nirdosh.enums.CustomerField;
+import com.nirdosh.form.CustomerForm;
 import com.nirdosh.service.CustomerService;
+
+import static org.springframework.data.mongodb.core.query.Criteria.*;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -100,6 +106,34 @@ public class CustomerServiceImpl implements CustomerService {
 			customerDAO.put(customer);
 		}
 
+	}
+
+	public void updateCustomer(CustomerForm customerForm) {
+		Query customerQuery = new Query(where("id").is(customerForm.getId()));
+		
+		Update customerUpdate = new Update();
+		if(StringUtils.isNotEmpty(customerForm.getFirstName())){
+			customerUpdate.set(CustomerField.FIRST_NAME.get(), customerForm.getFirstName());
+		}
+		
+		if(StringUtils.isNotEmpty(customerForm.getLastName())){
+			customerUpdate.set(CustomerField.LAST_NAME.get(), customerForm.getLastName());
+		}
+		
+		if(StringUtils.isNotEmpty(customerForm.getEmail())){
+			customerUpdate.set(CustomerField.EMAIL.get(), customerForm.getEmail());
+		}
+		
+		if(StringUtils.isNotEmpty(customerForm.getHome())){
+			LOGGER.debug("Home Telefone: {}",customerForm.getHome());
+			customerUpdate.set(CustomerField.HOME.get(), customerForm.getHome());
+		}
+		
+		if(StringUtils.isNotEmpty(customerForm.getMobile())){
+			customerUpdate.set(CustomerField.MOBILE.get(), customerForm.getMobile());
+		}
+		
+		customerDAO.update(customerQuery, customerUpdate);
 	}
 
 }

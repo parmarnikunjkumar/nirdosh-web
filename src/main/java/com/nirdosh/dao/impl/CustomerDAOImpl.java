@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.nirdosh.dao.CustomerDAO;
@@ -29,6 +31,10 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	public void delete(String id) {
 		mongoOperations.remove(mongoOperations.findById(id, Customer.class));	
+	}
+
+	public void update(Query query, Update update) {
+		mongoOperations.updateFirst(query, update, Customer.class);		
 	}
 	
 

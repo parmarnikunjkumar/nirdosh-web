@@ -22,6 +22,7 @@ import com.nirdosh.data.model.Customer;
 import com.nirdosh.data.model.CustomerCard;
 import com.nirdosh.data.model.Price;
 import com.nirdosh.enums.CardType;
+import com.nirdosh.form.CustomerForm;
 import com.nirdosh.service.CustomerService;
 import com.nirdosh.service.PriceService;
 import com.nirdosh.service.TrainningCourseService;
@@ -120,9 +121,9 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value="/updateCustomer", params="updateCustomer", method=RequestMethod.POST)
-	public ModelAndView updateCustomer(Customer customer, Model model) {
+	public ModelAndView updateCustomer(CustomerForm customerForm, Model model) {
 		
-		customerService.save(customer);
+		customerService.updateCustomer(customerForm);
 
 		return new ModelAndView("redirect:customer");
 	}

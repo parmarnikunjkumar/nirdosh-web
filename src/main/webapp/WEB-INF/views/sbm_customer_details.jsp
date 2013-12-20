@@ -25,6 +25,8 @@
 								<tr>
 									<th>Date</th>
 									<th>Course</th>
+									<th>Type</th>
+									<th>Price</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -33,12 +35,17 @@
 										<td><fmt:formatDate value="${course.onDate}"
 												pattern="dd-MM-yyyy HH:mm" /></td>
 										<td>${course.name}</td>
+										<td>${course.courseType}</td>
+										<td>${course.price}</td>
 									</tr>
+									<c:set var="totalPrice" value="${totalPrice + course.price }"></c:set>
 									<c:if test="${status.last}">
 										<c:set var="totalRecords" value="${status.count}" />
 										<tr>
 											<td><h5>Total</h5></td>
 											<td>${totalRecords}</td>
+											<td/>
+											<td>${totalPrice}</td>
 
 										</tr>
 									</c:if>

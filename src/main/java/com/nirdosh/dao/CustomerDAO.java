@@ -2,6 +2,9 @@ package com.nirdosh.dao;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+
 import com.nirdosh.data.model.Customer;
 
 public interface CustomerDAO {
@@ -13,5 +16,7 @@ public interface CustomerDAO {
 	List<Customer> getAll();
 	
 	void delete(String id);
+	
+	void update(Query query, Update update);
 	
 }

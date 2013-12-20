@@ -68,16 +68,17 @@ public class CourseController {
 	    course = trainningCourseService.getCourse(course.getId());
 		model.addAttribute("course", course);
 		model.addAttribute("customerList", customerService.getAll());
+		model.addAttribute("courseTypes", CourseType.values());
 		return "sbm_edit_course";
 
 	}
 
 	@RequestMapping(value = "/updateCourse",params="update",method=RequestMethod.POST)
-	public ModelAndView updateCourse(@ModelAttribute TrainningCourse course,
+	public String updateCourse(@ModelAttribute TrainningCourse course,
 			Model model) {
 		System.out.println(course.getName());
 		trainningCourseService.save(course);
-		return new ModelAndView("redirect:courses");
+		return "redirect:/course";
 	}
 
 	@RequestMapping(value = "/deleteCourse")

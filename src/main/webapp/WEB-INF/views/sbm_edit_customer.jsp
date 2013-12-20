@@ -47,6 +47,11 @@
 					<td><form:input path="customerCard.entriesLeft"/></td>
 					<td><form:errors path="customerCard.entriesLeft"/></td>				
 				</tr>
+				<tr>
+					<td><form:label path="customerCard.entriesLeft"><spring:message code="label.entriesleft"/> </form:label></td>
+					<td><form:input path="customerCard.entriesLeft"/></td>
+					<td><form:errors path="customerCard.entriesLeft"/></td>				
+				</tr>
 				<tr>					
 					<td><form:label path="balance"><spring:message code="label.balance"/> </form:label></td>
 					<td><form:input path="balance"/></td>
@@ -76,7 +81,7 @@
 <%-- 					<td><form:errors path="balance"/></td> --%>
 <!-- 				</tr> -->
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.update"/>" class="btn btn-primary"> </td>
+					<td colspan="2" align="center"><input type="submit" value="<spring:message code="label.update"/>" class="btn btn-primary" name="updateCustomer"> </td>
 				</tr>
 				<tr>
 					<td> <input type="button" value="CANCEL" onclick="location.href='cancel'" class="btn btn-danger"></td>
