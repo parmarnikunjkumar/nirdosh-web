@@ -22,6 +22,7 @@ import com.nirdosh.data.model.TrainningCourse;
 import com.nirdosh.enums.CourseType;
 import com.nirdosh.service.CustomerService;
 import com.nirdosh.service.TrainningCourseService;
+import com.nirdosh.web.forms.TrainCourseFromForm;
 import com.nirdosh.web.forms.TrainningCourseForm;
 
 @Controller
@@ -55,6 +56,16 @@ public class CourseController {
 		model.addAttribute("coursesList", courses);
 		model.addAttribute("course", new TrainningCourse());
 		model.addAttribute("courseTypes", CourseType.values());
+		model.addAttribute("trainningCourseFromForm", new TrainCourseFromForm());
+		return "sbm_courses";
+	}
+	
+	@RequestMapping(value="/getCoursesFrom", method=RequestMethod.POST)
+	public String getCourse(@ModelAttribute TrainCourseFromForm courseForm, BindingResult result, Model model){
+		List<TrainningCourse> courses = trainningCourseService.getCourses(courseForm.getFrom());
+		model.addAttribute("courseList", courses);
+		model.addAttribute("course", new TrainningCourse());
+		model.addAttribute("courseTypes", CourseType.values());		
 		return "sbm_courses";
 	}
 

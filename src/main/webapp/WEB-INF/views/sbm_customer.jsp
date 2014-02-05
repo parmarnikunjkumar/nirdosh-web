@@ -81,7 +81,7 @@
 <%-- 					<td><input type="button" value="+" onclick="location.href='incrementCount?id=${customer.id}'" class="btn btn-default btn-sm"> --%>
 <%-- 						<input type="button" value="-" onclick="location.href='decrementCount?id=${customer.id}'" class="btn btn-default btn-sm"> --%>
 <!-- 					</td> -->
-					<td>${customer.courseList.size()}</td>
+					<td>${fn:length(customer.courseList)}</td>
 					<td>
 						<input type="submit" class="btn btn-info" value="Details" name="details"/>
 					</td>
