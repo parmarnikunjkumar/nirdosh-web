@@ -3,7 +3,7 @@
 <div class="container">
 <div align="center">
 		<h2>Customer Manager</h2>
-		<form method="post" action="addCustomer">
+		<form:form method="post" action="addCustomer">
 			<table>
 				<tr>
 					<td><form:label path="firstName"><spring:message code="label.firstname"/> </form:label></td>
@@ -29,6 +29,11 @@
 					<td><form:label path="home"><spring:message code="label.home"/> </form:label></td>
 					<td><form:input path="home"/></td>
 					<td><form:errors path="home"/></td>
+				</tr>
+				<tr>
+					<td><form:label path="isSatsangi"><spring:message code="label.isStasangi"/> </form:label></td>
+					<td><form:checkbox path="isSatsangi"/></td>
+					<td><form:errors path="isSatsangi"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="cardType"><spring:message code="label.cardtype"/> </form:label></td>

@@ -43,6 +43,8 @@ public class Customer implements Serializable {
 	
 	private List<Payment> paymentHistory;
 	
+	private boolean isSatsangi;
+	
 	public String getId() {
 		return id;
 	}
@@ -152,8 +154,15 @@ public class Customer implements Serializable {
 	 */
 	public double getTotalBalance(){
 		return balance + getCustomerCard().getBalance();
+	}	
+
+	public boolean isSatsangi() {
+		return isSatsangi;
 	}
-	
+
+	public void setSatsangi(boolean isSatsangi) {
+		this.isSatsangi = isSatsangi;
+	}
 
 	@Override
 	public String toString() {

@@ -38,6 +38,8 @@ public class TrainningCourse implements Serializable{
 	private CourseType courseType;
 	
 	private double price;
+	
+	private double satsangiPrice;
 
 	public String getId() {
 		return id;
@@ -106,5 +108,13 @@ public class TrainningCourse implements Serializable{
 	public void setCourseType(CourseType courseType) {
 		this.courseType = courseType;
 	}
+
+	public double getSatsangiPrice() {
+		return satsangiPrice;
+	}
+
+	public void setSatsangiPrice(double satsangiPrice) {
+		this.satsangiPrice = satsangiPrice;
+	}	
 	
 }
