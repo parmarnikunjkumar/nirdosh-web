@@ -52,21 +52,6 @@
 			<version>1.1.0.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>4.2.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>javax.el</artifactId>
-			<version>2.2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator-cdi</artifactId>
-			<version>5.0.1.Final</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.1</version>
@@ -138,11 +123,6 @@
 			<artifactId>joda-time</artifactId>
 			<version>2.3</version>
 		</dependency>
-		<dependency>
-			<groupId>maven</groupId>
-			<artifactId>maven-dist-plugin</artifactId>
-			<version>1.7.1</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<finalName>nirdosh-web</finalName>
@@ -151,8 +131,8 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
-					<url>http://:8080/manager/text</url>
-					<server>myserver</server>
+					<url>http://54.195.251.212:8080/manager/text</url>
+					<server>smtserver</server>
 				</configuration>
 			</plugin>
 		</plugins>

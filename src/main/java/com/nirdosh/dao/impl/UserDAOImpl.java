@@ -27,4 +27,9 @@ public class UserDAOImpl implements UserDAO {
 		return user;
 	}
 
+
+	public void addUser(User user) {
+		mongoOperations.save(user);		
+	}
+
 }
