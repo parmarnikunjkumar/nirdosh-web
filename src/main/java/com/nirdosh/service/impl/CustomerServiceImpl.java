@@ -133,7 +133,13 @@ public class CustomerServiceImpl implements CustomerService {
 			customerUpdate.set(CustomerField.MOBILE.get(), customerForm.getMobile());
 		}
 		
+		customerUpdate.set(CustomerField.IS_SATSANGI.get(), customerForm.isSatsangi());
+		
 		customerDAO.update(customerQuery, customerUpdate);
+	}
+
+	public List<Customer> get(List<String> ids) {
+		return customerDAO.get(ids);
 	}
 
 }

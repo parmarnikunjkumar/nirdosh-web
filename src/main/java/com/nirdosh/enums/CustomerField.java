@@ -7,7 +7,8 @@ public enum CustomerField {
 	EMAIL("email"),
 	MOBILE("mobile"),
 	HOME("home"),
-	BALANCE("balance");
+	BALANCE("balance"),
+	IS_SATSANGI("isSatsangi");
 	
 	private String name;
 	

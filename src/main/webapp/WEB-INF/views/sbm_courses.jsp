@@ -27,6 +27,11 @@
 				<td><form:errors path="price"></form:errors></td>
 			</tr>
 			<tr>
+				<td><form:label path="satsangiPrice">Satsangi Price</form:label></td>
+				<td><form:input path="satsangiPrice" /></td>
+				<td><form:errors path="satsangiPrice"></form:errors></td>
+			</tr>
+			<tr>
 				<td><form:label path="courseType">Course Type</form:label></td>
 				<td>
 					<form:select path="courseType" items="${courseTypes}"/>
@@ -60,6 +65,7 @@
 							<th>TYPE</th>
 							<th>Members</th>
 							<th>EDIT</th>
+							<th>DETAILS</th>
 							<!-- 							<th>DELETE</th> -->
 							<th>REPEAT</th>
 						</tr>
@@ -79,6 +85,9 @@
 <!-- 									<input type="button" value="Edit" -->
 <%-- 									onclick="location.href='editCourse?id=${course.id}'" --%>
 <!-- 									class="btn btn-success"> -->
+								</td>
+								<td>
+									<input type="submit" value="Details" name="details" class="btn btn-success">
 								</td>
 								<%-- 							<td><input type="button" value="Delete" onclick="location.href='deleteCourse?id=${course.id}'" class="btn btn-danger"></td> --%>
 								<td><input type="submit" value="Repeat"	name="repeat" class="btn btn-info"></td>

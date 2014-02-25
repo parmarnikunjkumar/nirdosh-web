@@ -13,6 +13,8 @@ public class CustomerForm {
 	private String mobile;
 	
 	private String home;
+	
+	private boolean isSatsangi;
 
 	public String getId() {
 		return id;
@@ -61,5 +63,14 @@ public class CustomerForm {
 	public void setHome(String home) {
 		this.home = home;
 	}
+
+	public boolean isSatsangi() {
+		return isSatsangi;
+	}
+
+	public void setSatsangi(boolean isSatsangi) {
+		this.isSatsangi = isSatsangi;
+	}
+	
 
 }

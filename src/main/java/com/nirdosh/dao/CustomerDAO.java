@@ -18,5 +18,7 @@ public interface CustomerDAO {
 	void delete(String id);
 	
 	void update(Query query, Update update);
+
+	List<Customer> get(List<String> ids);
 	
 }

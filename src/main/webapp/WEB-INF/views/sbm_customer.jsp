@@ -35,6 +35,11 @@
 					<td><form:input path="home"/></td>
 					<td><form:errors path="home"/></td>
 				</tr>
+					<tr>
+					<td><form:label path="satsangi"><spring:message code="label.isSatsangi"/> </form:label></td>
+					<td><form:checkbox path="satsangi"/></td>
+					<td><form:errors path="satsangi"/></td>
+				</tr>
 <!-- 				<tr> -->
 <%-- 					<td><form:label path="cardType"><spring:message code="label.cardtype"/> </form:label></td> --%>
 <%-- 					<td><form:select path="cardType"> --%>

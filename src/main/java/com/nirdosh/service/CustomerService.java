@@ -26,4 +26,6 @@ public interface CustomerService {
 	void attendCourse(String id, TrainningCourse course);
 	
 	void updateCustomer(CustomerForm customerForm);
+	
+	List<Customer> get(List<String> ids);
 }

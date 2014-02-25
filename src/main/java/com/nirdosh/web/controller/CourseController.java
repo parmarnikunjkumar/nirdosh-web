@@ -93,6 +93,16 @@ public class CourseController {
 		trainningCourseService.updateCourse(courseForm);
 		return "redirect:/course";
 	}
+	
+	@RequestMapping(value="/updateCourse", params="details", method=RequestMethod.POST)
+	public String detailsCourse(@ModelAttribute TrainningCourseForm courseForm, Model model){
+		TrainningCourse course = trainningCourseService.getCourse(courseForm.getId());
+		model.addAttribute("course", course);
+		
+		List<Customer> customerList = customerService.get(course.getCustomersId());		
+		model.addAttribute("customerList",customerList);
+		return "sbm_course_details";
+	}
 
 	@RequestMapping(value = "/deleteCourse")
 	public String deleteCourse(HttpServletRequest request, String id) {
